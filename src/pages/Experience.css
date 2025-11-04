@@ -1,0 +1,19 @@
+.experience-page {
+  width: 100%;
+}
+
+.experience-header {
+  padding: var(--space-24) var(--space-4) var(--space-12);
+  background: var(--bg-light);
+  text-align: center;
+}
+
+.experience-content {
+  padding: var(--space-12) var(--space-4) var(--space-24);
+  background: var(--bg-white);
+}
+
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+}

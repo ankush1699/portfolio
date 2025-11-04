@@ -1,0 +1,147 @@
+.research-page {
+  width: 100%;
+}
+
+.research-header {
+  padding: var(--space-24) var(--space-4) var(--space-12);
+  background: var(--bg-light);
+  text-align: center;
+}
+
+.research-content {
+  padding: var(--space-12) var(--space-4) var(--space-24);
+  background: var(--bg-white);
+}
+
+.research-section {
+  margin-bottom: var(--space-16);
+}
+
+.section-title-small {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--space-8);
+}
+
+.publications-list,
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.publication-card,
+.note-card {
+  padding: var(--space-6);
+  background: var(--bg-light);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.publication-card:hover,
+.note-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.publication-header {
+  margin-bottom: var(--space-3);
+}
+
+.publication-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--space-2);
+}
+
+.publication-meta {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.publication-journal {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.publication-date {
+  color: var(--text-light);
+}
+
+.publication-authors {
+  color: var(--text-light);
+  margin-bottom: var(--space-3);
+  font-style: italic;
+}
+
+.publication-summary {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.publication-links {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.pub-link:hover {
+  color: var(--accent-hover);
+}
+
+.note-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--space-3);
+}
+
+.note-summary {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.note-metrics {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.metric-tag {
+  padding: var(--space-1) var(--space-3);
+  background: var(--bg-white);
+  color: var(--success);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+@media (max-width: 768px) {
+  .section-title-small {
+    font-size: 1.75rem;
+  }
+}
