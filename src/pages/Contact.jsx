@@ -3,12 +3,19 @@ import { motion } from 'framer-motion'
 import './Contact.css'
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi'
 
+// Formspree: create a form at https://formspree.io and set your form ID in .env as VITE_FORMSPREE_ID
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_ID
+  ? `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`
+  : null
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     setFormData({
@@ -17,12 +24,31 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here (e.g., Formspree, API call)
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I\'ll get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
+    if (!FORMSPREE_URL) {
+      setErrorMessage('Contact form is not configured. Please set VITE_FORMSPREE_ID in .env (get it from formspree.io).')
+      setStatus('error')
+      return
+    }
+    setStatus('sending')
+    setErrorMessage('')
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      if (!res.ok) throw new Error('Submission failed')
+      setStatus('success')
+      setFormData({ name: '', email: '', message: '' })
+    } catch {
+      setStatus('error')
+      setErrorMessage('Something went wrong. Please email me directly at ankushchaudhary.ac99@gmail.com')
+    }
   }
 
   return (
@@ -64,7 +90,7 @@ const Contact = () => {
                   </div>
                   <div className="contact-detail-content">
                     <h3>Email</h3>
-                    <a href="mailto:ankushchaudhary1@vt.edu">ankushchaudhary1@vt.edu</a>
+                    <a href="mailto:ankushchaudhary.ac99@gmail.com">ankushchaudhary.ac99@gmail.com</a>
                   </div>
                 </div>
 
@@ -74,7 +100,7 @@ const Contact = () => {
                   </div>
                   <div className="contact-detail-content">
                     <h3>Phone</h3>
-                    <a href="tel:+12345678900">Available upon request</a>
+                    <a href="tel:+18157798718">+1 (815) 779-8718</a>
                   </div>
                 </div>
 
@@ -97,6 +123,12 @@ const Contact = () => {
               transition={{ delay: 0.3 }}
             >
               <form className="contact-form" onSubmit={handleSubmit}>
+                {status === 'success' && (
+                  <p className="form-message form-message-success">Thank you! I&apos;ll get back to you soon.</p>
+                )}
+                {status === 'error' && (
+                  <p className="form-message form-message-error">{errorMessage}</p>
+                )}
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
                   <input
@@ -136,8 +168,8 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-submit">
-                  <FiSend /> Send Message
+                <button type="submit" className="btn btn-primary btn-submit" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Sending...' : (<><FiSend /> Send Message</>)}
                 </button>
               </form>
             </motion.div>

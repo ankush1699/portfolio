@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import './Research.css'
 import TagPill from '../components/TagPill'
-import { FiExternalLink, FiFileText } from 'react-icons/fi'
+import { FiFileText } from 'react-icons/fi'
 
 const Research = () => {
   const publications = [
@@ -11,8 +11,7 @@ const Research = () => {
       date: 'April 2020',
       authors: 'Ankush Chaudhary et al.',
       summary: 'Secure P2P communications using SHA-256 and blockchain technology for enhanced security and transparency.',
-      link: '#',
-      pdf: '#'
+      pdf: 'https://www.ijirset.com/upload/2020/april/151_Intelligence_NC.PDF'
     }
   ]
 
@@ -75,14 +74,9 @@ const Research = () => {
                   <p className="publication-authors">{pub.authors}</p>
                   <p className="publication-summary">{pub.summary}</p>
                   <div className="publication-links">
-                    {pub.link && (
-                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="pub-link">
-                        <FiExternalLink /> View Publication
-                      </a>
-                    )}
                     {pub.pdf && (
                       <a href={pub.pdf} target="_blank" rel="noopener noreferrer" className="pub-link">
-                        <FiFileText /> PDF
+                        <FiFileText /> View PDF
                       </a>
                     )}
                   </div>

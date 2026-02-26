@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <Router basename="/portfolio">
+      <ScrollToTop />
       <div className="App">
         <Navbar scrollY={scrollY} />
         <main className="main-content">

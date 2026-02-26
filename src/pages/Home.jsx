@@ -9,18 +9,12 @@ import { projects } from '../data/projects'
 
 const Home = () => {
   const featuredProjects = projects.slice(0, 3)
-  
-  const highlights = {
-    skills: ['C++', 'Python', 'TensorFlow', 'PyTorch', 'React', 'Spring Boot'],
-    focus: ['Deep Learning', 'Computer Vision', 'NLP', 'System Design', 'ZK Proofs'],
-    currently: ['Budget Management desktop app (PyQt6)', 'GTA (ECE 1004)']
-  }
 
   const experiencePreview = [
     {
       title: 'GTA/Grader',
-      company: 'ECE 1004',
-      period: 'Current',
+      company: '1004: Introduction to ECE Concepts',
+      period: 'Aug 2025 to Dec 2025',
       location: 'Virginia Tech',
       description: [
         'Grading assignments and providing student support',
@@ -29,15 +23,14 @@ const Home = () => {
     },
     {
       title: 'Lead Software Engineer Intern',
-      company: 'SWLI',
-      period: '2023',
-      location: 'Remote',
+      company: 'Shifting Waters Leadership Institute (SWLI)',
+      period: 'Jul 2025 to Sep 2025',
+      location: 'Richmond, VA · Remote',
       description: [
-        'Led WordPress/Bubble site build and Figma prototypes',
-        'Hostinger setup and Slack tracking systems',
-        'Mentored teammate and proposed internal tooling for growth'
+        "Sole technical owner of organization's web platform: led requirements, UI/UX in Figma, development, and deployment; mentored one junior developer.",
+        'Built responsive, mobile-first site with WordPress/Elementor Pro; WCAG accessibility, Google Analytics, and SEO. Automated form generation and Slack-based task workflows.'
       ],
-      tech: ['WordPress', 'Bubble', 'Figma']
+      tech: ['WordPress', 'Elementor Pro', 'Figma', 'Slack']
     }
   ]
 
@@ -66,7 +59,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              Ankush
+              Ankush Chaudhary
             </motion.h1>
             <motion.h2
               className="hero-title"
@@ -82,7 +75,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              I design and build ML-powered systems: from GANs and NLP to secure auth with ZK proofs—plus reliable full-stack apps. Currently a grader for ECE1004 and MS candidate (GPA 3.73).
+              Full-stack engineer with 4+ years of experience building enterprise mobile and web applications. At Tata Consultancy Services, I developed and shipped a hybrid mobile application for a UK-based financial services client serving 10K+ users, built a reusable application framework adopted across multiple client projects, and led a frontend team of 4 engineers. My core stack is Angular, Ionic, TypeScript, and Spring Boot, and I&apos;m currently completing my M.S. in Computer Engineering at Virginia Tech (GPA 3.8, May 2026).
             </motion.p>
             <motion.div
               className="hero-buttons"
@@ -96,7 +89,7 @@ const Home = () => {
               <Link to="/contact" className="btn btn-secondary">
                 Get in Touch
               </Link>
-              <a href="/resume.pdf" className="btn btn-outline" download>
+              <a href="https://www.icloud.com/iclouddrive/043pkLFh2vKhNrKsHIIspurHA#Ankush_Chaudhary_Software_Engineer_Resume" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 <FiDownload /> Download Resume
               </a>
             </motion.div>
@@ -106,49 +99,17 @@ const Home = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
             >
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href="https://github.com/ankush1699" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <FiGithub />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/ankushchaudhary01/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FiLinkedin />
               </a>
-              <a href="mailto:ankushchaudhary1@vt.edu" aria-label="Email">
+              <a href="mailto:ankushchaudhary.ac99@gmail.com" aria-label="Email">
                 <FiMail />
               </a>
             </motion.div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Highlights Section */}
-      <section className="highlights-section">
-        <div className="section-container">
-          <div className="highlights-grid">
-            <div className="highlight-block">
-              <h3 className="highlight-title">Core Skills</h3>
-              <div className="highlight-items">
-                {highlights.skills.map((skill) => (
-                  <TagPill key={skill}>{skill}</TagPill>
-                ))}
-              </div>
-            </div>
-            <div className="highlight-block">
-              <h3 className="highlight-title">Focus Areas</h3>
-              <div className="highlight-items">
-                {highlights.focus.map((area) => (
-                  <TagPill key={area}>{area}</TagPill>
-                ))}
-              </div>
-            </div>
-            <div className="highlight-block">
-              <h3 className="highlight-title">Currently</h3>
-              <ul className="highlight-list">
-                {highlights.currently.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
 

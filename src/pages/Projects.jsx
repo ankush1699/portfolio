@@ -24,7 +24,7 @@ const Projects = () => {
           >
             <h1 className="page-title">Projects</h1>
             <p className="page-subtitle">
-              Real systems with concrete outcomes—from ML models to secure authentication
+              Real systems with concrete outcomes, from ML models to secure authentication
             </p>
           </motion.div>
         </div>
