@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import { FiMenu, FiX } from 'react-icons/fi'
 
 const Navbar = ({ scrollY }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [logoError, setLogoError] = useState(false)
   const location = useLocation()
 
   const isActive = (path) => {
@@ -15,6 +16,14 @@ const Navbar = ({ scrollY }) => {
   }
 
   const closeMenu = () => setIsOpen(false)
+
+  const handleLogoClick = (e) => {
+    closeMenu()
+    if (location.pathname === '/') {
+      e.preventDefault()
+      window.scrollTo(0, 0)
+    }
+  }
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -28,8 +37,21 @@ const Navbar = ({ scrollY }) => {
   return (
     <nav className={`navbar ${scrollY > 60 ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <Link to="/" className="nav-logo" onClick={closeMenu}>
-          <span className="logo-text">Ankush</span>
+        <Link to="/" className="nav-logo" onClick={handleLogoClick} aria-label="Home">
+          {logoError ? (
+            <span className="nav-logo-fallback">AC</span>
+          ) : (
+            <img
+              src={`${import.meta.env.BASE_URL}avatar.jpg`}
+              alt="Ankush Chaudhary"
+              className="nav-logo-img"
+              onError={() => setLogoError(true)}
+            />
+          )}
+          <span className="nav-logo-name">
+            <span className="nav-logo-line">Ankush</span>
+            <span className="nav-logo-line">Chaudhary</span>
+          </span>
         </Link>
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
           {navItems.map((item) => (

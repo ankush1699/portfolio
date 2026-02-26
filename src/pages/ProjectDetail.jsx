@@ -26,8 +26,15 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {project.role && (
-              <span className="project-role-badge">{project.role}</span>
+            {(project.role || project.period) && (
+              <div className="project-detail-badges">
+                {project.role && (
+                  <span className="project-role-badge">{project.role}</span>
+                )}
+                {project.period && (
+                  <span className="project-period-badge">{project.period}</span>
+                )}
+              </div>
             )}
             <h1 className="project-detail-title">{project.title}</h1>
             {project.oneLiner && (

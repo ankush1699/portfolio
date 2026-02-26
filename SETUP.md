@@ -42,6 +42,27 @@ The site will be available at `http://localhost:5173`
 npm run build
 ```
 
+## Navbar logo (your photo)
+
+The header shows a circular photo on the left. Add your image to the project:
+
+- Place your photo at **`public/avatar.jpg`** (or use `avatar.png` and update the filename in `src/components/Navbar.jsx`).
+
+If the file is missing, the navbar shows your initials “AC” in a circle instead.
+
+## Contact form (Formspree)
+
+To receive contact form submissions by email:
+
+1. Go to [formspree.io](https://formspree.io) and sign up (free).
+2. Create a new form and add your email to receive submissions.
+3. Copy your form ID (e.g. `mzbqpkpn` from `https://formspree.io/f/mzbqpkpn`).
+4. In the project root, create a file **`.env`** with:
+   ```
+   VITE_FORMSPREE_ID=your_form_id_here
+   ```
+5. Restart the dev server. Submissions will be sent to your email.
+
 ## Troubleshooting
 
 - If you get "command not found" errors, restart your terminal after installing Node.js

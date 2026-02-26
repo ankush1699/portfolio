@@ -27,9 +27,9 @@
 
 .nav-logo {
   cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   transition: transform 0.3s ease;
   text-decoration: none;
 }
@@ -38,9 +38,41 @@
   transform: scale(1.05);
 }
 
-.logo-text {
-  color: var(--primary);
+.nav-logo-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+
+.nav-logo-fallback {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
   font-weight: 700;
+}
+
+.nav-logo-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+  padding-left: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.nav-logo-line {
+  display: block;
 }
 
 .nav-menu {
