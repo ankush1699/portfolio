@@ -89,7 +89,7 @@ const Home = () => {
               <Link to="/contact" className="btn btn-secondary">
                 Get in Touch
               </Link>
-              <a href="https://www.icloud.com/iclouddrive/043pkLFh2vKhNrKsHIIspurHA#Ankush_Chaudhary_Software_Engineer_Resume" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+              <a href={`${import.meta.env.BASE_URL}Ankush_Chaudhary_Resume.pdf`} className="btn btn-outline" download>
                 <FiDownload /> Download Resume
               </a>
             </motion.div>

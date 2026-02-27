@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './ProjectCard.css'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { FiGithub, FiExternalLink, FiFileText } from 'react-icons/fi'
 import TagPill from './TagPill'
 
 const ProjectCard = ({ project, index = 0 }) => {
@@ -36,6 +36,17 @@ const ProjectCard = ({ project, index = 0 }) => {
               aria-label="View Code"
             >
               <FiGithub />
+            </a>
+          )}
+          {project.report && (
+            <a 
+              href={`${import.meta.env.BASE_URL}${encodeURIComponent(project.report)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+              aria-label="View Report"
+            >
+              <FiFileText />
             </a>
           )}
           <Link 

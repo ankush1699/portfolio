@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './ProjectDetail.css'
-import { FiGithub, FiExternalLink, FiArrowLeft } from 'react-icons/fi'
+import { FiGithub, FiExternalLink, FiArrowLeft, FiFileText } from 'react-icons/fi'
 import TagPill from '../components/TagPill'
 import { getProjectBySlug } from '../data/projects'
 
@@ -61,6 +61,16 @@ const ProjectDetail = () => {
                     className="project-link-btn"
                   >
                     <FiExternalLink /> Demo
+                  </a>
+                )}
+                {project.report && (
+                  <a 
+                    href={`${import.meta.env.BASE_URL}${encodeURIComponent(project.report)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link-btn"
+                  >
+                    <FiFileText /> Report
                   </a>
                 )}
               </div>

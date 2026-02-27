@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import './Resume.css'
 import { FiDownload } from 'react-icons/fi'
 
-const RESUME_URL = 'https://www.icloud.com/iclouddrive/043pkLFh2vKhNrKsHIIspurHA#Ankush_Chaudhary_Software_Engineer_Resume'
+const RESUME_URL = `${import.meta.env.BASE_URL}Ankush_Chaudhary_Resume.pdf`
 
 const Resume = () => {
   return (
@@ -16,7 +16,7 @@ const Resume = () => {
           >
             <h1 className="page-title">Resume</h1>
             <p className="page-subtitle">
-              View or download my resume from iCloud
+              View or download my resume
             </p>
           </motion.div>
         </div>
@@ -31,19 +31,20 @@ const Resume = () => {
             transition={{ delay: 0.2 }}
           >
             <div className="resume-actions">
-              <a
-                href={RESUME_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-              >
-                <FiDownload /> View / Download Resume
+              <a href={RESUME_URL} download className="btn btn-primary">
+                <FiDownload /> Download Resume
+              </a>
+              <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                View in new tab
               </a>
             </div>
 
+            <div className="resume-viewer">
+              <iframe src={RESUME_URL} title="Resume PDF" className="resume-iframe" />
+            </div>
+
             <div className="resume-fallback">
-              <p>Opens in iCloud. You can view or download the PDF from there.</p>
-              <p>Direct link: <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">Ankush Chaudhary, Software Engineer Resume</a></p>
+              <p>If the PDF does not load, <a href={RESUME_URL} download>download it here</a>.</p>
             </div>
           </motion.div>
         </div>
