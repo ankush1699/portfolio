@@ -124,25 +124,30 @@
   }
 
   .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 70px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     background: var(--bg-white);
     width: 100%;
     text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-    padding: 2rem 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.08);
+    padding: 1rem 0;
     gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
   }
 
   .nav-menu.active {
-    left: 0;
+    max-height: 90vh;
+    opacity: 1;
   }
 
   .nav-menu a {
-    padding: 1rem 0;
+    padding: 1rem 1.5rem;
     width: 100%;
     display: block;
   }
