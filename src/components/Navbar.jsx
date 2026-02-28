@@ -53,21 +53,21 @@ const Navbar = ({ scrollY }) => {
             <span className="nav-logo-line">Chaudhary</span>
           </span>
         </Link>
+        <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={isActive(item.path) ? 'active' : ''}
+              onClick={closeMenu}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
         <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FiX /> : <FiMenu />}
         </div>
-      </div>
-      <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
-        {navItems.map((item) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={isActive(item.path) ? 'active' : ''}
-            onClick={closeMenu}
-          >
-            {item.label}
-          </Link>
-        ))}
       </div>
     </nav>
   )
