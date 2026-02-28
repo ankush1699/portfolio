@@ -75,7 +75,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              Full-stack engineer with 4+ years of experience building enterprise mobile and web applications. At Tata Consultancy Services, I developed and shipped a hybrid mobile application for a UK-based financial services client serving 10K+ users, built a reusable application framework adopted across multiple client projects, and led a frontend team of 4 engineers. My core stack is Angular, Ionic, TypeScript, and Spring Boot, and I&apos;m currently completing my M.S. in Computer Engineering at Virginia Tech (GPA 3.8, May 2026).
+              Full-stack engineer with 4+ years of experience building enterprise mobile and web applications. I developed and shipped a hybrid mobile application for a UK-based financial services client serving 10K+ users, built a reusable application framework adopted across multiple client projects, and led a frontend team of 4 engineers. My core stack is Angular, Ionic, TypeScript, and Spring Boot, and I&apos;m currently completing my M.S. in Computer Engineering at Virginia Tech (GPA 3.8, May 2026).
             </motion.p>
             <motion.div
               className="hero-buttons"
