@@ -7,7 +7,7 @@ import { projects } from '../data/projects'
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
   
-  const categories = ['All', 'ML', 'CV', 'Security/ZK', 'Apps']
+  const categories = ['All', 'AI', 'ML', 'CV', 'Security/ZK', 'Apps']
   
   const filteredProjects = selectedCategory === 'All' 
     ? projects 

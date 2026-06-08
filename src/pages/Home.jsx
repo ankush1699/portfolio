@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './Home.css'
@@ -8,6 +9,7 @@ import TimelineItem from '../components/TimelineItem'
 import { projects } from '../data/projects'
 
 const Home = () => {
+  const [avatarError, setAvatarError] = useState(false)
   const featuredProjects = projects.slice(0, 3)
 
   const experiencePreview = [
@@ -40,74 +42,96 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-container">
           <motion.div
-            className="hero-content"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            className="hero-layout"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.p
-              className="hero-greeting"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              Hi, I'm
-            </motion.p>
-            <motion.h1
-              className="hero-name"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              Ankush Chaudhary
-            </motion.h1>
-            <motion.h2
-              className="hero-title"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              Software & Machine Intelligence @ Virginia Tech
-            </motion.h2>
-            <motion.p
-              className="hero-description"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              Full-stack engineer with 4+ years of experience building enterprise mobile and web applications. I developed and shipped a hybrid mobile application for a UK-based financial services client serving 10K+ users, built a reusable application framework adopted across multiple client projects, and led a frontend team of 4 engineers. My core stack is Angular, Ionic, TypeScript, and Spring Boot, and I&apos;m currently completing my M.S. in Computer Engineering at Virginia Tech (GPA 3.8, May 2026).
-            </motion.p>
+            {/* Text column */}
+            <div className="hero-content">
+              <motion.p
+                className="hero-greeting"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                Hi, I'm
+              </motion.p>
+              <motion.h1
+                className="hero-name"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                Ankush Chaudhary
+              </motion.h1>
+              <motion.h2
+                className="hero-title"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                Full-Stack Engineer · M.S. Computer Engineering, Virginia Tech
+              </motion.h2>
+              <motion.p
+                className="hero-description"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                Full-stack engineer with 4+ years of experience building enterprise mobile and web applications. Shipped a hybrid mobile app for a UK financial services client serving 10K+ users, built a reusable framework adopted across client projects, and led a frontend team of 4. M.S. in Computer Engineering from Virginia Tech (GPA 3.8, May 2026).
+              </motion.p>
+              <motion.div
+                className="hero-buttons"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <Link to="/projects" className="btn btn-primary">
+                  View Projects
+                </Link>
+                <Link to="/contact" className="btn btn-secondary">
+                  Get in Touch
+                </Link>
+                <a href={`${import.meta.env.BASE_URL}Ankush_Chaudhary_Resume.pdf`} className="btn btn-outline" download>
+                  <FiDownload /> Resume
+                </a>
+              </motion.div>
+              <motion.div
+                className="hero-social"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+              >
+                <a href="https://github.com/ankush1699" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <FiGithub />
+                </a>
+                <a href="https://www.linkedin.com/in/ankushchaudhary01/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <FiLinkedin />
+                </a>
+                <a href="mailto:ankushchaudhary.ac99@gmail.com" aria-label="Email">
+                  <FiMail />
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Photo column */}
             <motion.div
-              className="hero-buttons"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              className="hero-photo-wrapper"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <Link to="/projects" className="btn btn-primary">
-                View Projects
-              </Link>
-              <Link to="/contact" className="btn btn-secondary">
-                Get in Touch
-              </Link>
-              <a href={`${import.meta.env.BASE_URL}Ankush_Chaudhary_Resume.pdf`} className="btn btn-outline" download>
-                <FiDownload /> Download Resume
-              </a>
-            </motion.div>
-            <motion.div
-              className="hero-social"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-            >
-              <a href="https://github.com/ankush1699" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <FiGithub />
-              </a>
-              <a href="https://www.linkedin.com/in/ankushchaudhary01/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <FiLinkedin />
-              </a>
-              <a href="mailto:ankushchaudhary.ac99@gmail.com" aria-label="Email">
-                <FiMail />
-              </a>
+              {avatarError ? (
+                <div className="hero-avatar-fallback">AC</div>
+              ) : (
+                <img
+                  src={`${import.meta.env.BASE_URL}avatar.jpg`}
+                  alt="Ankush Chaudhary"
+                  className="hero-avatar"
+                  onError={() => setAvatarError(true)}
+                />
+              )}
             </motion.div>
           </motion.div>
         </div>

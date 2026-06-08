@@ -16,6 +16,19 @@ const Experience = () => {
       ]
     },
     {
+      title: 'AI Fellow',
+      company: 'Handshake AI',
+      period: 'Oct 2025 to Nov 2025',
+      location: 'Remote',
+      description: [
+        'Selected for an internal AI safety initiative focused on identifying and documenting failure modes in large language model responses under adversarial conditions.',
+        'Engineered high-precision adversarial prompts targeting model reasoning boundaries, successfully eliciting incorrect or confidently wrong responses across complex DSA and computational mathematics problems.',
+        'Stress-tested model performance on multi-step algorithmic reasoning including graph traversal, dynamic programming, and mathematical proof construction, exposing systematic failure patterns.',
+        'Documented failure cases with structured prompt-response analysis, contributing to a red-teaming knowledge base that informed model reliability improvements in technical reasoning domains.'
+      ],
+      tech: ['LLM Red-Teaming', 'Adversarial Prompting', 'AI Safety', 'Python']
+    },
+    {
       title: 'Lead Software Engineer Intern',
       company: 'Shifting Waters Leadership Institute (SWLI)',
       period: 'Jul 2025 to Sep 2025',
