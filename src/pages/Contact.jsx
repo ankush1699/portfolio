@@ -110,7 +110,7 @@ const Contact = () => {
                   </div>
                   <div className="contact-detail-content">
                     <h3>Location</h3>
-                    <p>Virginia Tech, Blacksburg, VA</p>
+                    <p>Chicago, IL</p>
                   </div>
                 </div>
               </div>
