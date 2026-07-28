@@ -1,27 +1,27 @@
 export const projects = [
   {
-    slug: 'ai-powered-resume-cover-letter-agent',
-    title: 'AI-Powered Resume & Cover Letter Agent',
-    oneLiner: '5-node LangGraph agentic pipeline that auto-tailors resumes and cover letters per job description in under 2 minutes.',
+    slug: 'autonomous-job-search-agent',
+    title: 'Autonomous Job Search & Application Agent',
+    oneLiner: 'Multi-provider LangGraph agent with a cost-gated pipeline: scores job fit for free, pays for LLM tokens only when a role is worth applying to.',
     role: 'Solo Project',
-    period: 'May 2026',
-    description: 'An end-to-end agentic system that reads job descriptions from a Google Sheets interface, then runs a 5-node LangGraph pipeline to tailor resumes and generate cover letters using Claude (Haiku 4.5 for fast JD triage, Sonnet 4.6 for writing). Output is a production-quality PDF generated from a Jinja2-LaTeX pipeline with ATS keyword extraction and per-JD skill reordering.',
-    stack: ['Python', 'LangGraph', 'LangChain', 'Anthropic API', 'Google Sheets API', 'LaTeX', 'Pydantic', 'Jinja2'],
+    period: 'May 2026 — ongoing',
+    description: 'An end-to-end job search system with three entry modes over one core engine: an automated scraper (SerpApi, jobspy, RSS), a manual paste-a-JD mode, and a Playwright form-filler that stops before submit. Every JD passes a "should-apply" gate first — deterministic visa/clearance red-flag regexes, then a content-hash cache, then an LLM fit rubric on a free tier (Groq/Ollama) — so a bad-fit posting never costs a paid token. Only final prose runs on Claude Sonnet; a Jinja2-LaTeX pipeline renders print-ready PDFs.',
+    stack: ['Python', 'LangGraph', 'LangChain', 'Anthropic API', 'Groq', 'Ollama', 'Playwright', 'SerpApi', 'LaTeX', 'Pydantic'],
     outcomes: [
-      '5-node agentic pipeline with structured Pydantic output schemas and ATS keyword extraction',
-      'Per-JD bullet rewriting and cover letter generation via Claude Sonnet 4.6',
-      'Reduces resume tailoring from hours to under 2 minutes per application'
+      'Should-apply gate (skills match, visa red flags, seniority) kills bad fits at zero cost; verdicts cached permanently by JD content hash',
+      'Tiered model routing: free-tier models for scoring/selection/QA, Claude Sonnet only for recruiter-facing prose — ~60% cost reduction',
+      'Deterministic truthfulness validators (metric provenance, tech-stack consistency, title accuracy) gate every generated bullet'
     ],
-    metrics: ['< 2 min per application'],
+    metrics: ['~$0.05 per application', '3 entry modes, 1 engine', '0 tokens on bad-fit JDs'],
     repo: 'https://github.com/ankush1699/',
     demo: null,
     cover: null,
     date: '2026-05-01',
     category: 'AI',
-    problem: 'Tailoring a resume and cover letter for each job application takes hours of manual work, making a high-volume job search unsustainable.',
-    approach: 'Built a 5-node LangGraph pipeline triggered from a Google Sheets interface. Claude Haiku 4.5 handles fast JD triage and ATS keyword extraction; Claude Sonnet 4.6 rewrites resume bullets and generates a tailored cover letter. Pydantic schemas enforce structured output throughout; a Jinja2-LaTeX pipeline renders the final PDF.',
-    results: 'Reduces tailoring from hours to under 2 minutes per application. Handles structured output reliably across varied JD formats and produces print-ready PDFs automatically.',
-    improvements: ['Web UI trigger instead of Google Sheets', 'Multi-model comparison mode', 'Auto-tracking of application status']
+    problem: 'Tailoring a resume per application takes hours, and naive LLM automation burns money tailoring resumes for jobs not worth applying to — visa red flags, wrong seniority, wrong stack.',
+    approach: 'Restructured the pipeline around an early-exit gate: regex red flags (free) → content-addressed JD cache (free) → LLM fit rubric on Groq free tier / local Ollama. Surviving JDs flow through keyword extraction, bullet selection, and a Claude Sonnet writer, with Python validators checking every metric and technology claim against master data before an editor pass that only runs when something is flagged. A Playwright autofill mode fills application forms and hands control back before submit — no CAPTCHA bypass, no bot-detection evasion.',
+    results: 'Cost per tailored application dropped from ~$0.13 to ~$0.05; background job scoring is fully free-tier. The same engine serves scraper, manual, and autofill modes, and no posting is ever processed twice.',
+    improvements: ['FastAPI + web dashboard on Fly.io', 'Application outcome tracking to tune the scoring rubric', 'Typst instead of LaTeX for lighter deploys']
   },
   {
     slug: 'personal-budget-management-pyqt6',

@@ -1,113 +1,79 @@
 import { motion } from 'framer-motion'
 import './Experience.css'
-import TimelineItem from '../components/TimelineItem'
+import { experience, education, skills } from '../data/profile'
+
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-40px' },
+  transition: { duration: 0.5, ease: 'easeOut' },
+}
 
 const Experience = () => {
-  const experience = [
-    {
-      title: 'GTA/Grader',
-      company: '1004: Introduction to ECE Concepts',
-      period: 'Aug 2025 to Dec 2025',
-      location: 'Virginia Tech',
-      description: [
-        'Grading assignments and providing student support',
-        'Teaching foundational ECE concepts',
-        'Developing clear rubrics and assessment strategies'
-      ]
-    },
-    {
-      title: 'AI Fellow',
-      company: 'Handshake AI',
-      period: 'Oct 2025 to Nov 2025',
-      location: 'Remote',
-      description: [
-        'Selected for an internal AI safety initiative focused on identifying and documenting failure modes in large language model responses under adversarial conditions.',
-        'Engineered high-precision adversarial prompts targeting model reasoning boundaries, successfully eliciting incorrect or confidently wrong responses across complex DSA and computational mathematics problems.',
-        'Stress-tested model performance on multi-step algorithmic reasoning including graph traversal, dynamic programming, and mathematical proof construction, exposing systematic failure patterns.',
-        'Documented failure cases with structured prompt-response analysis, contributing to a red-teaming knowledge base that informed model reliability improvements in technical reasoning domains.'
-      ],
-      tech: ['LLM Red-Teaming', 'Adversarial Prompting', 'AI Safety', 'Python']
-    },
-    {
-      title: 'Lead Software Engineer Intern',
-      company: 'Shifting Waters Leadership Institute (SWLI)',
-      period: 'Jul 2025 to Sep 2025',
-      location: 'Richmond, VA · Remote',
-      description: [
-        "Sole technical owner of organization's web platform: led requirements gathering, technology selection, UI/UX design in Figma, development, and deployment while working directly with the CEO. Mentored one junior team member on development workflows.",
-        'Built responsive, mobile-first website using WordPress and Elementor Pro, implementing WCAG accessibility standards, Google Analytics tracking, and SEO optimization.',
-        'Automated program and service form generation into structured spreadsheets for executive reporting, and designed Slack-based task management workflows for the distributed team.'
-      ],
-      tech: ['WordPress', 'Elementor Pro', 'Figma', 'Slack', 'Web Development']
-    },
-    {
-      title: 'System Engineer',
-      company: 'Tata Consultancy Services',
-      period: 'Apr 2021 to Jul 2024',
-      location: 'Pune, Maharashtra, India',
-      description: [
-        'Developed Angular/Ionic hybrid mobile application for a UK-based financial services client, building frontend modules, UI components, and API integrations for a product serving 10K+ users.',
-        'Integrated 30+ RESTful API endpoints on the frontend, implementing token-based authentication flows including route guards, HTTP interceptors, and session management.',
-        'Optimized backend API performance by adding conditional logic to serve only mobile-specific data and queries, eliminating redundant processing and significantly reducing response times.',
-        'Architected reusable application framework (project structure, authentication, base UI components) adopted by 2 additional client projects, reducing initial development time for new engagements.',
-        'Led frontend team of 4 during final year, conducting code reviews, pair programming sessions, and internal training that improved code quality and onboarding speed.',
-        'Monitored production logs during releases and incidents, identifying and resolving issues to minimize service disruption.'
-      ],
-      tech: ['Angular', 'Ionic', 'TypeScript', 'REST APIs', 'JavaScript']
-    },
-    {
-      title: 'Assistant System Engineer',
-      company: 'Tata Consultancy Services',
-      period: 'Nov 2020 to Mar 2021',
-      location: 'Pune, Maharashtra, India',
-      description: [
-        'Developed and maintained Angular-based web application components for enterprise client, implementing responsive UI features and ensuring cross-browser compatibility.',
-        'Collaborated with senior engineers to implement Spring Boot backend services and RESTful APIs, gaining hands-on experience with full-stack development workflows.',
-        'Conducted unit testing with Jasmine and Karma to ensure code quality before production deployment.'
-      ],
-      tech: ['Angular', 'Spring Boot', 'Java', 'Jasmine', 'Karma']
-    },
-    {
-      title: 'Python Developer',
-      company: 'Obdurate Technologies',
-      period: 'Jul 2019 to Aug 2019',
-      location: 'Amravati, Maharashtra, India',
-      description: [
-        'Developed Python-based IoT control system integrated with Arduino sensors, automating device management workflows for prototype testing.',
-        'Built lightweight REST APIs using Flask for real-time IoT device communication and sensor data handling.',
-        'Assisted with sensor calibration, hardware-software integration, and troubleshooting connectivity between IoT devices and control systems.'
-      ],
-      tech: ['Python', 'Flask', 'Arduino', 'IoT']
-    }
-  ]
-
   return (
     <div className="experience-page">
-      <section className="experience-header">
+      <section className="exp-header">
         <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="page-title">Experience</h1>
-            <p className="page-subtitle">
-              Work and teaching highlights: building systems and mentoring teams
-            </p>
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
+            <p className="mono-label"><span className="idx">02</span>Experience</p>
+            <h1 className="page-title">Where I&rsquo;ve worked</h1>
           </motion.div>
         </div>
       </section>
 
-      <section className="experience-content">
+      <section className="exp-body">
         <div className="section-container">
-          <div className="timeline">
-            {experience.map((item, index) => (
-              <TimelineItem
-                key={index}
-                item={item}
-                index={index}
-                isLast={index === experience.length - 1}
-              />
+          {experience.map((e) => (
+            <motion.article key={e.company + e.period} className="exp-entry" {...fadeUp}>
+              <div className="exp-meta">
+                <p className="mono-label exp-period">{e.period}</p>
+                <p className="exp-location">{e.location}</p>
+              </div>
+              <div className="exp-detail">
+                <h3 className="exp-title">{e.title}</h3>
+                <p className="exp-company">{e.company}</p>
+                <ul className="exp-bullets">
+                  {e.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
+                <div className="exp-tech">
+                  {e.tech.map((t) => (
+                    <span key={t} className="work-metric">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      <section className="exp-education">
+        <div className="section-container">
+          <p className="mono-label exp-section-label"><span className="idx">+</span>Education</p>
+          {education.map((ed) => (
+            <motion.div key={ed.degree} className="exp-entry exp-entry-compact" {...fadeUp}>
+              <div className="exp-meta">
+                <p className="mono-label exp-period">{ed.period}</p>
+              </div>
+              <div className="exp-detail">
+                <h4 className="exp-title-sm">{ed.degree} — {ed.school}</h4>
+                <p className="exp-edu-detail">{ed.detail}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="exp-skills">
+        <div className="section-container">
+          <p className="mono-label exp-section-label"><span className="idx">+</span>Toolbox</p>
+          <div className="skills-grid">
+            {Object.entries(skills).map(([category, items]) => (
+              <motion.div key={category} className="skills-group" {...fadeUp}>
+                <p className="mono-label skills-category">{category}</p>
+                <p className="skills-items">{items.join(' · ')}</p>
+              </motion.div>
             ))}
           </div>
         </div>

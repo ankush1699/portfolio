@@ -1,205 +1,152 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './Home.css'
-import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-icons/fi'
-import ProjectCard from '../components/ProjectCard'
-import TagPill from '../components/TagPill'
-import TimelineItem from '../components/TimelineItem'
+import { FiArrowUpRight, FiArrowRight, FiDownload } from 'react-icons/fi'
 import { projects } from '../data/projects'
+import { personal, experience } from '../data/profile'
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { duration: 0.55, ease: 'easeOut' },
+}
 
 const Home = () => {
-  const [avatarError, setAvatarError] = useState(false)
-  const featuredProjects = projects.slice(0, 3)
-
-  const experiencePreview = [
-    {
-      title: 'GTA/Grader',
-      company: '1004: Introduction to ECE Concepts',
-      period: 'Aug 2025 to Dec 2025',
-      location: 'Virginia Tech',
-      description: [
-        'Grading assignments and providing student support',
-        'Teaching foundational ECE concepts'
-      ]
-    },
-    {
-      title: 'Lead Software Engineer Intern',
-      company: 'Shifting Waters Leadership Institute (SWLI)',
-      period: 'Jul 2025 to Sep 2025',
-      location: 'Richmond, VA · Remote',
-      description: [
-        "Sole technical owner of organization's web platform: led requirements, UI/UX in Figma, development, and deployment; mentored one junior developer.",
-        'Built responsive, mobile-first site with WordPress/Elementor Pro; WCAG accessibility, Google Analytics, and SEO. Automated form generation and Slack-based task workflows.'
-      ],
-      tech: ['WordPress', 'Elementor Pro', 'Figma', 'Slack']
-    }
-  ]
+  const featured = projects.slice(0, 3)
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-container">
-          <motion.div
-            className="hero-layout"
+      {/* ——— Hero ——— */}
+      <section className="hero">
+        <div className="section-container">
+          <motion.p
+            className="mono-label hero-kicker"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ delay: 0.1 }}
           >
-            {/* Text column */}
-            <div className="hero-content">
-              <motion.p
-                className="hero-greeting"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                Hi, I'm
-              </motion.p>
-              <motion.h1
-                className="hero-name"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                Ankush Chaudhary
-              </motion.h1>
-              <motion.h2
-                className="hero-title"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                Full-Stack Engineer · M.S. Computer Engineering, Virginia Tech
-              </motion.h2>
-              <motion.p
-                className="hero-description"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                Full-stack engineer with 4+ years of experience building enterprise mobile and web applications. Shipped a hybrid mobile app for a UK financial services client serving 10K+ users, built a reusable framework adopted across client projects, and led a frontend team of 4. M.S. in Computer Engineering from Virginia Tech (GPA 3.8, May 2026).
-              </motion.p>
-              <motion.div
-                className="hero-buttons"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                <Link to="/projects" className="btn btn-primary">
-                  View Projects
-                </Link>
-                <Link to="/contact" className="btn btn-secondary">
-                  Get in Touch
-                </Link>
-                <a href={`${import.meta.env.BASE_URL}Ankush_Chaudhary_Resume.pdf`} className="btn btn-outline" download>
-                  <FiDownload /> Resume
-                </a>
-              </motion.div>
-              <motion.div
-                className="hero-social"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-              >
-                <a href="https://github.com/ankush1699" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                  <FiGithub />
-                </a>
-                <a href="https://www.linkedin.com/in/ankushchaudhary01/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <FiLinkedin />
-                </a>
-                <a href="mailto:ankushchaudhary.ac99@gmail.com" aria-label="Email">
-                  <FiMail />
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Photo column */}
-            <motion.div
-              className="hero-photo-wrapper"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              {avatarError ? (
-                <div className="hero-avatar-fallback">AC</div>
-              ) : (
-                <img
-                  src={`${import.meta.env.BASE_URL}avatar.jpg`}
-                  alt="Ankush Chaudhary"
-                  className="hero-avatar"
-                  onError={() => setAvatarError(true)}
-                />
-              )}
-            </motion.div>
+            {personal.location} · {personal.availability}
+          </motion.p>
+          <motion.h1
+            className="hero-name"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.18, duration: 0.6 }}
+          >
+            Ankush<br />Chaudhary
+          </motion.h1>
+          <motion.div
+            className="hero-role-row"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.55 }}
+          >
+            <p className="hero-role">{personal.role}</p>
+            <p className="hero-tagline">{personal.tagline}</p>
+          </motion.div>
+          <motion.div
+            className="hero-links"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.45 }}
+          >
+            <a href={personal.github} target="_blank" rel="noopener noreferrer">GitHub <FiArrowUpRight /></a>
+            <a href={personal.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <FiArrowUpRight /></a>
+            <a href={`mailto:${personal.email}`}>Email <FiArrowUpRight /></a>
+            <a href={`${import.meta.env.BASE_URL}${personal.resumePdf}`} download>Résumé <FiDownload /></a>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <section className="projects-section">
+      {/* ——— 01 Selected work ——— */}
+      <section className="work">
         <div className="section-container">
-          <div className="section-header">
-            <h2 className="section-title">Featured Projects</h2>
-            <p className="section-subtitle">Real systems with concrete outcomes</p>
+          <div className="section-head">
+            <p className="mono-label"><span className="idx">01</span>Selected Work</p>
+            <Link to="/projects" className="section-head-link">All projects <FiArrowRight /></Link>
           </div>
-          <div className="projects-grid">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
-            ))}
-          </div>
-          <div className="section-footer">
-            <Link to="/projects" className="btn btn-secondary">
-              View All Projects <FiArrowRight />
-            </Link>
-          </div>
+          {featured.map((p, i) => (
+            <motion.div key={p.slug} {...fadeUp}>
+              <Link to={`/projects/${p.slug}`} className="work-row">
+                <span className="work-num mono-label">{String(i + 1).padStart(2, '0')}</span>
+                <div className="work-main">
+                  <h3 className="work-title">{p.title}</h3>
+                  <p className="work-oneliner">{p.oneLiner}</p>
+                  {p.metrics?.length > 0 && (
+                    <div className="work-metrics">
+                      {p.metrics.map((m) => (
+                        <span key={m} className="work-metric">{m}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <span className="work-arrow"><FiArrowUpRight /></span>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Experience Preview */}
-      <section className="experience-section">
+      {/* ——— 02 Experience ledger ——— */}
+      <section className="ledger">
         <div className="section-container">
-          <div className="section-header">
-            <h2 className="section-title">Experience</h2>
-            <p className="section-subtitle">Work & teaching highlights</p>
+          <div className="section-head">
+            <p className="mono-label"><span className="idx">02</span>Experience</p>
+            <Link to="/experience" className="section-head-link">Full history <FiArrowRight /></Link>
           </div>
-          <div className="timeline">
-            {experiencePreview.map((item, index) => (
-              <TimelineItem
-                key={index}
-                item={item}
-                index={index}
-                isLast={index === experiencePreview.length - 1}
-              />
-            ))}
-          </div>
-          <div className="section-footer">
-            <Link to="/experience" className="btn btn-secondary">
-              View Full Experience <FiArrowRight />
-            </Link>
-          </div>
+          {experience.map((e) => (
+            <motion.div key={e.company + e.period} className="ledger-row" {...fadeUp}>
+              <span className="ledger-period mono-label">{e.period}</span>
+              <div className="ledger-main">
+                <h4 className="ledger-title">
+                  {e.title} <span className="ledger-at">·</span> {e.company}
+                </h4>
+                <p className="ledger-summary">{e.summary}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
+      {/* ——— 03 Research ——— */}
+      <section className="research-strip">
         <div className="section-container">
-          <motion.div
-            className="cta-content"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="cta-title">Let's Build Something Together</h2>
-            <p className="cta-description">
-              I'm always interested in new projects and collaborations. 
-              Let's start a conversation.
-            </p>
-            <Link to="/contact" className="btn btn-primary btn-large">
-              Get in Touch
-            </Link>
+          <div className="section-head">
+            <p className="mono-label"><span className="idx">03</span>Research</p>
+            <Link to="/research" className="section-head-link">All research <FiArrowRight /></Link>
+          </div>
+          <motion.div {...fadeUp}>
+            <a
+              className="research-feature"
+              href={`${import.meta.env.BASE_URL}Predicting Traffic Flows in Blacksburg.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div>
+                <h3 className="research-feature-title">Predicting Chaotic Traffic Flows in Smart Cities</h3>
+                <p className="research-feature-sub">
+                  Chaos-inspired LSTM forecasting on real-time traffic and weather data — 87% accuracy,
+                  sub-2s inference. Virginia Tech.
+                </p>
+              </div>
+              <span className="mono-label research-feature-cta">Read the paper <FiArrowUpRight /></span>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ——— Closing CTA ——— */}
+      <section className="closing">
+        <div className="section-container">
+          <motion.div {...fadeUp}>
+            <h2 className="closing-title">Currently interviewing for software &amp; AI engineering roles.</h2>
+            <div className="closing-actions">
+              <a href={`mailto:${personal.email}`} className="btn btn-primary btn-large">Get in touch</a>
+              <a href={`${import.meta.env.BASE_URL}${personal.resumePdf}`} className="btn btn-large" download>
+                <FiDownload /> Download résumé
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
