@@ -32,16 +32,16 @@ const Experience = () => {
               <div className="exp-detail">
                 <h3 className="exp-title">{e.title}</h3>
                 <p className="exp-company">{e.company}</p>
-                <ul className="exp-bullets">
-                  {e.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
-                </ul>
                 <div className="exp-tech">
                   {e.tech.map((t) => (
                     <span key={t} className="work-metric">{t}</span>
                   ))}
                 </div>
+                <ul className="exp-bullets">
+                  {e.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
               </div>
             </motion.article>
           ))}
@@ -57,7 +57,7 @@ const Experience = () => {
                 <p className="mono-label exp-period">{ed.period}</p>
               </div>
               <div className="exp-detail">
-                <h4 className="exp-title-sm">{ed.degree} — {ed.school}</h4>
+                <h4 className="exp-title-sm">{ed.degree} · {ed.school}</h4>
                 <p className="exp-edu-detail">{ed.detail}</p>
               </div>
             </motion.div>

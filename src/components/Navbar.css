@@ -4,38 +4,42 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(247, 244, 238, 0.85);
+  background: rgba(11, 41, 40, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(201, 138, 44, 0.22);
   transition: border-color 0.25s ease;
 }
 
 .navbar.scrolled {
-  border-bottom-color: var(--hairline);
+  border-bottom-color: rgba(201, 138, 44, 0.45);
 }
 
 .nav-container {
-  max-width: 1080px;
+  width: 90%;
   margin: 0 auto;
-  padding: 0 var(--space-6);
-  height: 64px;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--ink-deep);
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  line-height: 0;
 }
 
-.nav-logo:hover {
-  color: var(--blue);
+.nav-logo-img {
+  height: 54px;
+  width: auto;
+  display: block;
+  transition: opacity 0.18s ease;
+}
+
+.nav-logo:hover .nav-logo-img {
+  opacity: 0.8;
 }
 
 .nav-menu {
@@ -50,19 +54,19 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink-muted);
+  color: rgba(237, 234, 226, 0.75);
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
   transition: color 0.18s ease, border-color 0.18s ease;
 }
 
 .nav-menu a:hover {
-  color: var(--ink-deep);
+  color: var(--amber);
 }
 
 .nav-menu a.active {
-  color: var(--ink-deep);
-  border-bottom-color: var(--blue);
+  color: var(--amber);
+  border-bottom-color: var(--amber);
 }
 
 .nav-toggle {
@@ -70,7 +74,7 @@
   background: none;
   border: none;
   font-size: 1.4rem;
-  color: var(--ink-deep);
+  color: #fff;
   cursor: pointer;
   padding: var(--space-2);
 }
@@ -82,14 +86,14 @@
 
   .nav-menu {
     position: fixed;
-    top: 64px;
+    top: 84px;
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    background: var(--paper);
-    border-bottom: 1px solid var(--hairline);
+    background: rgba(11, 41, 40, 0.98);
+    border-bottom: 1px solid rgba(237, 234, 226, 0.15);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.25s ease;
@@ -102,11 +106,11 @@
   .nav-menu a {
     width: 100%;
     padding: var(--space-4) var(--space-6);
-    border-top: 1px solid var(--hairline);
+    border-top: 1px solid rgba(237, 234, 226, 0.15);
     border-bottom: none;
   }
 
   .nav-menu a.active {
-    color: var(--blue);
+    color: var(--amber);
   }
 }

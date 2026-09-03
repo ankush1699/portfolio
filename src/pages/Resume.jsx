@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import './Resume.css'
 import { FiDownload } from 'react-icons/fi'
+import { personal } from '../data/profile'
 
-const RESUME_URL = `${import.meta.env.BASE_URL}Ankush_Chaudhary_Resume.pdf`
+const RESUME_URL = `${import.meta.env.BASE_URL}${personal.resumePdf}`
 
 const Resume = () => {
   return (

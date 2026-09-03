@@ -10,12 +10,12 @@
 }
 
 .tag-pill-default {
-  background: var(--bg-light);
-  color: var(--accent);
-  border: 1px solid var(--border);
+  background: var(--amber-bg);
+  color: var(--amber-ink);
+  border: 1px solid transparent;
 }
 
 .tag-pill-primary {
-  background: var(--accent);
+  background: var(--amber);
   color: white;
 }

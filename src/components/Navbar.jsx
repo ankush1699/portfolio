@@ -36,7 +36,7 @@ const Navbar = ({ scrollY }) => {
     <nav className={`navbar ${scrollY > 60 ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <Link to="/" className="nav-logo" onClick={handleLogoClick} aria-label="Home">
-          A—C
+          <img src={`${import.meta.env.BASE_URL}logo-dark.svg`} alt="Ankush Chaudhary" className="nav-logo-img" />
         </Link>
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
           {navItems.map((item) => (

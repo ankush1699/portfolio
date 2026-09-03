@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-grid">
           <div className="footer-col footer-col-main">
-            <p className="footer-name">Ankush Chaudhary</p>
+            <img src={`${import.meta.env.BASE_URL}logo-dark.svg`} alt="Ankush Chaudhary" className="footer-logo-img" />
             <p className="footer-role">{personal.role}</p>
             <a href={`mailto:${personal.email}`} className="footer-email">
               {personal.email}
@@ -44,7 +44,6 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>© {currentYear} Ankush Chaudhary</p>
-          <p className="footer-colophon">Set in Fraunces, Inter &amp; IBM Plex Mono</p>
         </div>
       </div>
     </footer>

@@ -164,9 +164,9 @@
 
 .metric-tag {
   padding: var(--space-1) var(--space-3);
-  background: transparent;
-  color: var(--blue);
-  border: 1px solid var(--hairline-strong);
+  background: var(--amber-bg);
+  color: var(--amber-ink);
+  border: 1px solid transparent;
   border-radius: 999px;
   font-family: var(--font-mono);
   font-weight: 500;
