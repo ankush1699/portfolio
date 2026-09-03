@@ -3,10 +3,18 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(to bottom, rgba(201, 138, 44, 0.24), transparent),
+    radial-gradient(ellipse 900px 1100px at 100% 100%, rgba(18, 60, 59, 0.30), transparent 65%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, top left;
+  background-size: 100% 600px, 100% 100%;
 }
 
 .main-content {
   flex: 1;
-  /* Fixed navbar is 64px; page heroes provide their own breathing room */
-  padding-top: 64px;
+  /* Fixed navbar is 84px; page heroes provide their own breathing room */
+  padding-top: 84px;
 }

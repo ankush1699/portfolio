@@ -20,14 +20,6 @@ const Home = () => {
       {/* ——— Hero ——— */}
       <section className="hero">
         <div className="section-container">
-          <motion.p
-            className="mono-label hero-kicker"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-          >
-            {personal.location} · {personal.availability}
-          </motion.p>
           <motion.h1
             className="hero-name"
             initial={{ opacity: 0, y: 28 }}
@@ -42,7 +34,11 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.55 }}
           >
-            <p className="hero-role">{personal.role}</p>
+            <p className="hero-role">
+              {personal.role.split(' · ').map((line, i, arr) => (
+                <span key={line}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
+            </p>
             <p className="hero-tagline">{personal.tagline}</p>
           </motion.div>
           <motion.div

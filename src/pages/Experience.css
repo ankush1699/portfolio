@@ -71,16 +71,21 @@
 }
 
 .exp-bullets li::before {
-  content: '—';
+  content: '';
   position: absolute;
-  left: 0;
-  color: var(--blue);
+  left: 4px;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
 }
 
 .exp-tech {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  margin-bottom: var(--space-6);
 }
 
 .exp-education,
