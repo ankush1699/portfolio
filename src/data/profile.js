@@ -4,9 +4,10 @@
 
 export const personal = {
   name: 'Ankush Chaudhary',
-  role: 'Full-Stack Engineer · AI/ML Engineer',
+  role: 'Full-Stack AI Software Engineer · Java, Python, Spring Boot, Angular',
   tagline:
-    'Four years building production software at enterprise scale. Now I design the autonomous LLM pipelines that extend it. M.S. Computer Engineering, Virginia Tech.',
+    'I build software people can rely on. Now building AI tools in Python.',
+  taglineHighlights: ['software people can rely on', 'AI tools in Python'],
   location: 'Chicago, IL',
   email: 'ankushchaudhary.ac99@gmail.com',
   github: 'https://github.com/ankush1699/',
@@ -85,3 +86,17 @@ export const skills = {
   'Cloud & DevOps': ['AWS', 'Docker', 'GitLab CI', 'GitHub Actions', 'Jenkins'],
   Data: ['MySQL', 'MongoDB'],
 }
+
+// Headline numbers for the home page. Each one already appears in the experience
+// or project data; this is only a summary of them.
+export const stats = [
+  { value: '10K+', label: 'active users on the UK financial services app I owned the frontend for' },
+  { value: '35%', label: 'faster project setup from a reusable framework adopted by 2 more client teams' },
+  { value: '40%', label: 'faster deployments after automating GitLab CI/CD pipelines' },
+  { value: '~9¢', label: 'per tailored application, measured, in my job search pipeline' },
+]
+
+export const coreStack = [
+  'Java', 'Python', 'TypeScript', 'Spring Boot', 'Angular', 'React',
+  'Node.js', 'LangGraph', 'Docker', 'AWS', 'MySQL', 'MongoDB',
+]

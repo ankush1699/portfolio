@@ -24,14 +24,14 @@
 
 .filter-btn {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border: 1px solid var(--hairline-strong);
   background: transparent;
   color: var(--ink-muted);
-  border-radius: 999px;
+  border-radius: var(--radius-chip);
   cursor: pointer;
   transition: all 0.18s ease;
 }
@@ -42,9 +42,9 @@
 }
 
 .filter-btn.active {
-  background: var(--ink-deep);
-  border-color: var(--ink-deep);
-  color: var(--paper);
+  background: var(--chip-bg);
+  border-color: var(--maroon);
+  color: var(--maroon);
 }
 
 .work-metric-cat {

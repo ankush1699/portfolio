@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-grid">
           <div className="footer-col footer-col-main">
-            <img src={`${import.meta.env.BASE_URL}logo-dark.svg`} alt="Ankush Chaudhary" className="footer-logo-img" />
+            <img src={`${import.meta.env.BASE_URL}logo-on-dark.png`} alt="Ankush Chaudhary" className="footer-logo-img" />
             <p className="footer-role">{personal.role}</p>
             <a href={`mailto:${personal.email}`} className="footer-email">
               {personal.email}

@@ -78,10 +78,10 @@
 }
 
 .contact-form-wrapper {
-  background: var(--bg-light);
+  background: var(--panel);
   padding: var(--space-8);
-  border-radius: 16px;
-  border: 1px solid var(--border);
+  border-radius: 32px;
+  border: none;
 }
 
 .contact-form {

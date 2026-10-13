@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { MotionConfig } from 'framer-motion'
 import './App.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import RouteTitle from './components/RouteTitle'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -23,10 +25,13 @@ function App() {
 
   return (
     <Router basename="/portfolio">
+      <MotionConfig reducedMotion="user">
       <ScrollToTop />
+      <RouteTitle />
+      <a href="#main" className="skip-link">Skip to content</a>
       <div className="App">
         <Navbar scrollY={scrollY} />
-        <main className="main-content">
+        <main className="main-content" id="main" tabIndex={-1}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
@@ -39,6 +44,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      </MotionConfig>
     </Router>
   )
 }

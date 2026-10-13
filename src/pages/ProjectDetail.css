@@ -33,15 +33,15 @@
 .project-period-badge {
   display: inline-block;
   padding: var(--space-1) var(--space-3);
-  border-radius: 20px;
+  border-radius: var(--radius-chip);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .project-role-badge {
-  background: var(--accent);
-  color: white;
+  background: var(--chip-bg);
+  color: var(--maroon);
   text-transform: uppercase;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .project-detail-title {
-  font-size: 3rem;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: var(--space-4);
@@ -104,10 +104,10 @@
 
 .metric-badge {
   padding: var(--space-2) var(--space-4);
-  background: var(--bg-white);
-  color: var(--success);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  background: var(--chip-bg);
+  color: var(--maroon);
+  border: 1px solid transparent;
+  border-radius: var(--radius-chip);
   font-weight: 600;
   font-size: 0.875rem;
 }

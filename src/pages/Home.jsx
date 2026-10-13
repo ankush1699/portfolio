@@ -1,63 +1,130 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './Home.css'
 import { FiArrowUpRight, FiArrowRight, FiDownload } from 'react-icons/fi'
 import { projects } from '../data/projects'
-import { personal, experience } from '../data/profile'
+import { personal, experience, stats, coreStack } from '../data/profile'
+import ProjectCover from '../components/ProjectCover'
 
 const fadeUp = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 12 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.55, ease: 'easeOut' },
+  viewport: { once: true, margin: '-20px' },
+  transition: { duration: 0.3, ease: 'easeOut' },
+}
+
+// Wrap the given phrases in rounded highlight boxes (maroon text)
+const renderHighlighted = (text, phrases = []) => {
+  if (!phrases.length) return text
+  const escaped = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+  return text
+    .split(new RegExp(`(${escaped.join('|')})`, 'g'))
+    .map((part, i) => (phrases.includes(part) ? <span key={i} className="hl">{part}</span> : part))
 }
 
 const Home = () => {
   const featured = projects.slice(0, 3)
+  const [photoFailed, setPhotoFailed] = useState(false)
+  const [roleTitle, roleStack = ''] = personal.role.split(' · ')
+  const stack = roleStack.split(',').map((t) => t.trim()).filter(Boolean)
 
   return (
     <div className="home">
       {/* ——— Hero ——— */}
       <section className="hero">
-        <div className="section-container">
-          <motion.h1
-            className="hero-name"
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18, duration: 0.6 }}
-          >
-            Ankush<br />Chaudhary
-          </motion.h1>
+        <div className="section-container hero-grid">
           <motion.div
-            className="hero-role-row"
+            className="hero-photo"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.55 }}
+            transition={{ duration: 0.55 }}
           >
-            <p className="hero-role">
-              {personal.role.split(' · ').map((line, i, arr) => (
-                <span key={line}>{line}{i < arr.length - 1 && <br />}</span>
+            {photoFailed ? (
+              <div className="hero-photo-placeholder" role="img" aria-label="Ankush Chaudhary">
+                AC
+              </div>
+            ) : (
+              <img
+                className="hero-photo-img"
+                src={`${import.meta.env.BASE_URL}hero.png`}
+                alt="Ankush Chaudhary"
+                onError={() => setPhotoFailed(true)}
+              />
+            )}
+          </motion.div>
+
+          <div className="hero-content panel">
+            <motion.h1
+              className="hero-name"
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.18, duration: 0.6 }}
+            >
+              Ankush<br /><span className="hero-name-accent">Chaudhary</span>
+            </motion.h1>
+            <motion.div
+              className="hero-role-row"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.55 }}
+            >
+              <p className="hero-role">{roleTitle}</p>
+              {stack.length > 0 && (
+                <div className="hero-chips">
+                  {stack.map((t) => (
+                    <span key={t} className="hl hl-chip">{t}</span>
+                  ))}
+                </div>
+              )}
+              <p className="hero-tagline">{renderHighlighted(personal.tagline, personal.taglineHighlights)}</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="hero-actions">
+                <a href={`${import.meta.env.BASE_URL}${personal.resumePdf}`} className="btn btn-primary" download>
+                  <FiDownload /> Résumé
+                </a>
+                <Link to="/contact" className="btn btn-secondary">Contact me</Link>
+              </div>
+              <div className="hero-links">
+                <a href={personal.github} target="_blank" rel="noopener noreferrer">GitHub <FiArrowUpRight /></a>
+                <a href={personal.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <FiArrowUpRight /></a>
+                <a href={`mailto:${personal.email}`}>Email <FiArrowUpRight /></a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ——— Numbers and core stack ——— */}
+      <section className="proof">
+        <div className="section-container">
+          <div className="stats-grid">
+            {stats.map((s) => (
+              <motion.div key={s.value} className="stat-card" {...fadeUp}>
+                <span className="stat-value">{s.value}</span>
+                <span className="stat-label">{s.label}</span>
+              </motion.div>
+            ))}
+          </div>
+          <div className="stack-strip" aria-label="Core stack">
+            <span className="mono-label">Core stack</span>
+            <ul className="stack-list">
+              {coreStack.map((t) => (
+                <li key={t} className="work-metric">{t}</li>
               ))}
-            </p>
-            <p className="hero-tagline">{personal.tagline}</p>
-          </motion.div>
-          <motion.div
-            className="hero-links"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45 }}
-          >
-            <a href={personal.github} target="_blank" rel="noopener noreferrer">GitHub <FiArrowUpRight /></a>
-            <a href={personal.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <FiArrowUpRight /></a>
-            <a href={`mailto:${personal.email}`}>Email <FiArrowUpRight /></a>
-            <a href={`${import.meta.env.BASE_URL}${personal.resumePdf}`} download>Résumé <FiDownload /></a>
-          </motion.div>
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* ——— 01 Selected work ——— */}
       <section className="work">
-        <div className="section-container">
+        <div className="section-container panel">
           <div className="section-head">
             <p className="mono-label"><span className="idx">01</span>Selected Work</p>
             <Link to="/projects" className="section-head-link">All projects <FiArrowRight /></Link>
@@ -77,6 +144,7 @@ const Home = () => {
                     </div>
                   )}
                 </div>
+                <div className="work-cover"><ProjectCover project={p} /></div>
                 <span className="work-arrow"><FiArrowUpRight /></span>
               </Link>
             </motion.div>
@@ -107,7 +175,7 @@ const Home = () => {
 
       {/* ——— 03 Research ——— */}
       <section className="research-strip">
-        <div className="section-container">
+        <div className="section-container panel">
           <div className="section-head">
             <p className="mono-label"><span className="idx">03</span>Research</p>
             <Link to="/research" className="section-head-link">All research <FiArrowRight /></Link>
@@ -122,8 +190,8 @@ const Home = () => {
               <div>
                 <h3 className="research-feature-title">Predicting Chaotic Traffic Flows in Smart Cities</h3>
                 <p className="research-feature-sub">
-                  Chaos-inspired LSTM forecasting on real-time traffic and weather data — 87% accuracy,
-                  sub-2s inference. Virginia Tech.
+                  Chaos-inspired LSTM forecasting on real-time traffic and weather data, with 87% accuracy
+                  and sub-2s inference. Virginia Tech.
                 </p>
               </div>
               <span className="mono-label research-feature-cta">Read the paper <FiArrowUpRight /></span>

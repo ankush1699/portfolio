@@ -4,9 +4,20 @@ import './ProjectDetail.css'
 import { FiGithub, FiExternalLink, FiArrowLeft, FiFileText } from 'react-icons/fi'
 import TagPill from '../components/TagPill'
 import { getProjectBySlug } from '../data/projects'
+import ProjectCover from '../components/ProjectCover'
+
+const LEGACY_SLUGS = {
+  'autonomous-job-search-agent': 'job-search-resume-pipeline',
+}
 
 const ProjectDetail = () => {
   const { slug } = useParams()
+
+  // Links to the old address of the renamed job pipeline project keep working
+  if (LEGACY_SLUGS[slug]) {
+    return <Navigate to={`/projects/${LEGACY_SLUGS[slug]}`} replace />
+  }
+
   const project = getProjectBySlug(slug)
 
   if (!project) {
@@ -96,6 +107,7 @@ const ProjectDetail = () => {
         <div className="section-container">
           <div className="project-content-grid">
             <div className="project-main-content">
+              <ProjectCover project={project} large />
               {project.problem && (
                 <motion.div
                   className="content-section"

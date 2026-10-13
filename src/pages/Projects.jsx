@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import './Projects.css'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { projects } from '../data/projects'
+import ProjectCover from '../components/ProjectCover'
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -48,7 +49,7 @@ const Projects = () => {
               key={p.slug}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05, duration: 0.45 }}
+              transition={{ delay: Math.min(i, 3) * 0.04, duration: 0.3 }}
             >
               <Link to={`/projects/${p.slug}`} className="work-row">
                 <span className="work-num mono-label">{String(i + 1).padStart(2, '0')}</span>
@@ -62,6 +63,7 @@ const Projects = () => {
                     ))}
                   </div>
                 </div>
+                <div className="work-cover"><ProjectCover project={p} /></div>
                 <span className="work-arrow"><FiArrowUpRight /></span>
               </Link>
             </motion.div>

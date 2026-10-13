@@ -9,7 +9,7 @@ const Research = () => {
     venue: 'Graduate research, Virginia Tech',
     date: 'Dec 2024',
     summary:
-      'Chaos-inspired LSTM architecture for traffic flow forecasting on real-time traffic and weather data. Combines chaos-theory treatment of nonlinear dynamics with deep sequence modeling — 87% prediction accuracy with sub-2-second inference for congestion forecasting.',
+      'Chaos-inspired LSTM architecture for traffic flow forecasting on real-time traffic and weather data. Combines chaos-theory treatment of nonlinear dynamics with deep sequence modeling, reaching 87% prediction accuracy with sub-2-second inference for congestion forecasting.',
     metrics: ['Accuracy: 87%', 'Inference: <2s'],
     tags: ['LSTM', 'Chaos Theory', 'Time Series', 'Smart Cities'],
     pdf: `${import.meta.env.BASE_URL}Predicting Traffic Flows in Blacksburg.pdf`,
@@ -31,14 +31,14 @@ const Research = () => {
     {
       title: 'Task-Vector Composition for Multitask BERT',
       summary:
-        'One 110M-parameter BERT serving both sentiment and NER via task-vector composition — 87% accuracy on SST-2, 74% F1 on CoNLL-2003. Explored efficient parameter sharing for multitask learning.',
+        'One 110M-parameter BERT serving both sentiment and NER via task-vector composition, reaching 87% accuracy on SST-2 and 74% F1 on CoNLL-2003. Explored efficient parameter sharing for multitask learning.',
       metrics: ['SST-2: 87%', 'NER F1: 74%'],
       tags: ['NLP', 'BERT', 'Multitask Learning'],
     },
     {
       title: 'Cost-Gated LLM Agent Pipelines',
       summary:
-        'Design notes from the autonomous job-search agent: early-exit scoring gates, content-addressed caching, and tiered model routing (free-tier scoring, frontier-model prose) to cut per-task LLM cost ~60% without quality loss where it matters.',
+        'Design notes from the automated job search pipeline: early-exit scoring gates, content-addressed caching, and tiered model routing (Groq and local Ollama for scoring, Claude Haiku as the fallback, Claude Sonnet for the final text) to keep a tailored application near 9 cents.',
       tags: ['LLM Agents', 'LangGraph', 'Cost Optimization'],
     },
     {

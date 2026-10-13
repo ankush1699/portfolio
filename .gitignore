@@ -24,3 +24,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw font download (license: free for personal use). Only the converted web fonts in public/fonts are served.
+font/
+
+# Original full-size headshot (kept locally, not published)
+source-images/

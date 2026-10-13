@@ -3,10 +3,10 @@ import './Experience.css'
 import { experience, education, skills } from '../data/profile'
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 12 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-40px' },
-  transition: { duration: 0.5, ease: 'easeOut' },
+  viewport: { once: true, margin: '-20px' },
+  transition: { duration: 0.3, ease: 'easeOut' },
 }
 
 const Experience = () => {
