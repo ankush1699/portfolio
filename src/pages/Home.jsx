@@ -33,7 +33,7 @@ const Home = () => {
     <div className="home">
       {/* ——— Hero ——— */}
       <section className="hero">
-        <div className="section-container hero-grid">
+        <div className="section-container hero-grid panel">
           <motion.div
             className="hero-photo"
             initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ const Home = () => {
             )}
           </motion.div>
 
-          <div className="hero-content panel">
+          <div className="hero-content">
             <motion.h1
               className="hero-name"
               initial={{ opacity: 0, y: 28 }}

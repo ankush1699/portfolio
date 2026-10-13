@@ -6,7 +6,7 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 38% minmax(0, 1fr);
+  grid-template-columns: 36% minmax(0, 1fr);
   gap: var(--space-12);
   align-items: center;
 }
@@ -25,13 +25,14 @@
 
 .hero-photo-img {
   object-fit: cover;
+  box-shadow: 0 0 0 6px #FFFFFF;
 }
 
 .hero-photo-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--panel);
+  background: #FFFFFF;
   color: var(--maroon);
   font-family: var(--font-display);
   font-weight: 700;
@@ -388,6 +389,21 @@
 
   .hero-photo {
     max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-role-row::before {
+    margin: 0 auto;
+  }
+
+  .hero-chips,
+  .hero-actions,
+  .hero-links {
+    justify-content: center;
   }
 
   .work-row {
