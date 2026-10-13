@@ -2,10 +2,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './Home.css'
-import { FiArrowUpRight, FiArrowRight, FiDownload } from 'react-icons/fi'
+import { FiArrowUpRight, FiArrowRight } from 'react-icons/fi'
 import { projects } from '../data/projects'
 import { personal, experience, stats, coreStack } from '../data/profile'
+import { researchPapers } from '../data/research'
 import ProjectCover from '../components/ProjectCover'
+import ResumeButton from '../components/ResumeButton'
 
 const fadeUp = {
   initial: { opacity: 0, y: 12 },
@@ -14,7 +16,7 @@ const fadeUp = {
   transition: { duration: 0.3, ease: 'easeOut' },
 }
 
-// Wrap the given phrases in rounded highlight boxes (maroon text)
+// Wrap the given phrases in rounded highlight boxes (burgundy text)
 const renderHighlighted = (text, phrases = []) => {
   if (!phrases.length) return text
   const escaped = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
@@ -31,7 +33,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* ——— Hero ——— */}
+      {/*--- Hero--- */}
       <section className="hero">
         <div className="section-container hero-grid panel">
           <motion.div
@@ -85,9 +87,7 @@ const Home = () => {
               transition={{ delay: 0.3 }}
             >
               <div className="hero-actions">
-                <a href={`${import.meta.env.BASE_URL}${personal.resumePdf}`} className="btn btn-primary" download>
-                  <FiDownload /> Résumé
-                </a>
+                <ResumeButton className="btn btn-primary">Résumé</ResumeButton>
                 <Link to="/contact" className="btn btn-secondary">Contact me</Link>
               </div>
               <div className="hero-links">
@@ -100,7 +100,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ——— Numbers and core stack ——— */}
+      {/*--- Numbers and core stack--- */}
       <section className="proof">
         <div className="section-container">
           <div className="stats-grid">
@@ -122,7 +122,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ——— 01 Selected work ——— */}
+      {/*--- 01 Selected work--- */}
       <section className="work">
         <div className="section-container panel">
           <div className="section-head">
@@ -152,7 +152,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ——— 02 Experience ledger ——— */}
+      {/*--- 02 Experience ledger--- */}
       <section className="ledger">
         <div className="section-container">
           <div className="section-head">
@@ -173,43 +173,40 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ——— 03 Research ——— */}
+      {/*--- 03 Research--- */}
       <section className="research-strip">
         <div className="section-container panel">
           <div className="section-head">
             <p className="mono-label"><span className="idx">03</span>Research</p>
             <Link to="/research" className="section-head-link">All research <FiArrowRight /></Link>
           </div>
-          <motion.div {...fadeUp}>
-            <a
-              className="research-feature"
-              href={`${import.meta.env.BASE_URL}Predicting Traffic Flows in Blacksburg.pdf`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div>
-                <h3 className="research-feature-title">Predicting Chaotic Traffic Flows in Smart Cities</h3>
-                <p className="research-feature-sub">
-                  Chaos-inspired LSTM forecasting on real-time traffic and weather data, with 87% accuracy
-                  and sub-2s inference. Virginia Tech.
-                </p>
-              </div>
-              <span className="mono-label research-feature-cta">Read the paper <FiArrowUpRight /></span>
-            </a>
-          </motion.div>
+          {researchPapers.map((paper) => (
+            <motion.div key={paper.id} {...fadeUp}>
+              <a
+                className="research-feature"
+                href={paper.paperUrl || `${import.meta.env.BASE_URL}${encodeURIComponent(paper.localPdf)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div>
+                  <h3 className="research-feature-title">{paper.title}</h3>
+                  <p className="research-feature-sub">{paper.venue}, {paper.date}</p>
+                </div>
+                <span className="mono-label research-feature-cta">Read the paper <FiArrowUpRight /></span>
+              </a>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* ——— Closing CTA ——— */}
+      {/*--- Closing CTA--- */}
       <section className="closing">
         <div className="section-container">
           <motion.div {...fadeUp}>
             <h2 className="closing-title">Currently interviewing for software &amp; AI engineering roles.</h2>
             <div className="closing-actions">
               <a href={`mailto:${personal.email}`} className="btn btn-primary btn-large">Get in touch</a>
-              <a href={`${import.meta.env.BASE_URL}${personal.resumePdf}`} className="btn btn-large" download>
-                <FiDownload /> Download résumé
-              </a>
+              <ResumeButton className="btn btn-large">Download résumé</ResumeButton>
             </div>
           </motion.div>
         </div>

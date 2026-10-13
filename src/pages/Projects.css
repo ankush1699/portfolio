@@ -43,8 +43,8 @@
 
 .filter-btn.active {
   background: var(--chip-bg);
-  border-color: var(--maroon);
-  color: var(--maroon);
+  border-color: var(--burgundy);
+  color: var(--burgundy);
 }
 
 .work-metric-cat {

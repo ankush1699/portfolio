@@ -68,3 +68,21 @@
     height: 70vh;
   }
 }
+
+.resume-placeholder {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-8);
+  background: var(--card-bg);
+  border-radius: 28px;
+  text-align: left;
+}
+
+.resume-placeholder-title {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-3);
+}
+
+.resume-placeholder p {
+  margin-bottom: var(--space-6);
+}

@@ -1,20 +1,13 @@
 import { motion } from 'framer-motion'
 import './Research.css'
 import TagPill from '../components/TagPill'
-import { FiFileText, FiArrowUpRight } from 'react-icons/fi'
+import { FiFileText, FiArrowUpRight, FiGithub } from 'react-icons/fi'
+import { researchPapers } from '../data/research'
+
+const paperHref = (paper) =>
+  paper.paperUrl || `${import.meta.env.BASE_URL}${encodeURIComponent(paper.localPdf)}`
 
 const Research = () => {
-  const featured = {
-    title: 'Predicting Chaotic Traffic Flows in Smart Cities',
-    venue: 'Graduate research, Virginia Tech',
-    date: 'Dec 2024',
-    summary:
-      'Chaos-inspired LSTM architecture for traffic flow forecasting on real-time traffic and weather data. Combines chaos-theory treatment of nonlinear dynamics with deep sequence modeling, reaching 87% prediction accuracy with sub-2-second inference for congestion forecasting.',
-    metrics: ['Accuracy: 87%', 'Inference: <2s'],
-    tags: ['LSTM', 'Chaos Theory', 'Time Series', 'Smart Cities'],
-    pdf: `${import.meta.env.BASE_URL}Predicting Traffic Flows in Blacksburg.pdf`,
-  }
-
   const publications = [
     {
       title: 'Intelligence Bureau Communication Application Using Blockchain',
@@ -31,9 +24,8 @@ const Research = () => {
     {
       title: 'Task-Vector Composition for Multitask BERT',
       summary:
-        'One 110M-parameter BERT serving both sentiment and NER via task-vector composition, reaching 87% accuracy on SST-2 and 74% F1 on CoNLL-2003. Explored efficient parameter sharing for multitask learning.',
-      metrics: ['SST-2: 87%', 'NER F1: 74%'],
-      tags: ['NLP', 'BERT', 'Multitask Learning'],
+        'Fine-tuning BERT separately on sentiment (SST-2) and named entity recognition (CoNLL-2003), taking a task vector from each, and merging them into one 110M-parameter model. The notebooks cover fine-tuning, merging and evaluation.',
+      tags: ['NLP', 'BERT', 'PyTorch', 'Multitask Learning'],
     },
     {
       title: 'Cost-Gated LLM Agent Pipelines',
@@ -66,30 +58,42 @@ const Research = () => {
 
       <section className="research-content">
         <div className="section-container">
-          {/* Featured: VT graduate research */}
-          <motion.a
-            className="research-featured"
-            href={featured.pdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <p className="mono-label research-featured-venue">
-              {featured.venue} · {featured.date}
-            </p>
-            <h2 className="research-featured-title">{featured.title}</h2>
-            <p className="research-featured-summary">{featured.summary}</p>
-            <div className="note-metrics">
-              {featured.metrics.map((m) => (
-                <span key={m} className="metric-tag">{m}</span>
-              ))}
-            </div>
-            <span className="mono-label research-featured-cta">
-              Read the paper <FiArrowUpRight />
-            </span>
-          </motion.a>
+          {/* Featured research papers */}
+          {researchPapers.map((paper, i) => (
+            <motion.article
+              key={paper.id}
+              className="research-featured"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 + i * 0.05, duration: 0.3 }}
+            >
+              <p className="mono-label research-featured-venue">
+                {paper.venue} · {paper.date}
+              </p>
+              <h2 className="research-featured-title">{paper.title}</h2>
+              <p className="research-featured-summary">{paper.summary}</p>
+              <div className="note-metrics">
+                {paper.metrics.map((m) => (
+                  <span key={m} className="metric-tag">{m}</span>
+                ))}
+              </div>
+              <div className="note-tags">
+                {paper.tags.map((tag) => (
+                  <TagPill key={tag}>{tag}</TagPill>
+                ))}
+              </div>
+              <div className="research-featured-links">
+                <a href={paperHref(paper)} target="_blank" rel="noopener noreferrer" className="mono-label research-featured-cta">
+                  Read the paper <FiArrowUpRight />
+                </a>
+                {paper.codeUrl && (
+                  <a href={paper.codeUrl} target="_blank" rel="noopener noreferrer" className="mono-label research-featured-cta">
+                    <FiGithub /> Code on GitHub
+                  </a>
+                )}
+              </div>
+            </motion.article>
+          ))}
 
           <div className="research-section">
             <h2 className="section-title-small">Publications</h2>

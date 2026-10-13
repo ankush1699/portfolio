@@ -11,11 +11,11 @@
 
 .tag-pill-default {
   background: var(--chip-bg);
-  color: var(--maroon);
+  color: var(--burgundy);
   border: 1px solid transparent;
 }
 
 .tag-pill-primary {
-  background: var(--maroon);
+  background: var(--burgundy);
   color: #fff;
 }

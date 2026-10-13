@@ -32,7 +32,7 @@
 }
 
 :root {
-  /* ——— Soft gray and white palette ——— */
+  /* --- Light gray and white, charcoal text, burgundy accent (matches the LinkedIn banner) --- */
   --gray-50: #F5F6F8;
   --gray-100: #ECEEF1;
   --gray-200: #E2E5E9;
@@ -40,11 +40,11 @@
   --gray-700: #4B515A;
   --gray-800: #2E3238;
   --gray-900: #1E2126;
-  --maroon: #7A1F2B;
-  --maroon-deep: #5C1520;
-  --maroon-tint: #F3E6E8;          /* background of highlighted words and chips */
+  --burgundy: #7A1F3D;
+  --burgundy-deep: #5C1730;
+  --burgundy-tint: #F4E7EC;          /* background of highlighted words and chips */
 
-  /* ——— Roles (WCAG AA checked, see the commit notes) ——— */
+  /* --- Roles (WCAG AA checked, see the commit notes) --- */
   --paper: #FFFFFF;                /* page background: plain white */
   --paper-raised: #FFFFFF;         /* cards and alternate sections */
   --ink: var(--gray-800);          /* main text */
@@ -53,8 +53,8 @@
   --ink-faint: #5A606A;            /* labels and metadata */
   --hairline: #DADDE2;
   --hairline-strong: #C3C8CF;
-  --blue: var(--maroon);           /* accents and links */
-  --blue-deep: var(--maroon-deep); /* hover / pressed */
+  --blue: var(--burgundy);           /* accents and links */
+  --blue-deep: var(--burgundy-deep); /* hover / pressed */
 
   /* Header and footer: dark charcoal, light text (all pairs 7:1 or better).
      Uses logo-on-dark.png, a copy of the logo with "Chaudhary" in light gray. */
@@ -79,12 +79,12 @@
   --card-bg: var(--panel);         /* cards sitting on white */
   --row-chip: #FFFFFF;             /* highlight boxes sitting on a gray card */
 
-  /* ——— Type: Lemon Milk for headings, Inter for everything else ——— */
+  /* --- Type: Lemon Milk for headings, Inter for everything else --- */
   --font-display: 'Lemon Milk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-text: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* ——— Legacy token names (older pages read these) ——— */
+  /* --- Legacy token names (older pages read these) --- */
   --primary: var(--ink-deep);
   --primary-dark: #000000;
   --accent: var(--blue);
@@ -101,7 +101,7 @@
   --warning: #B45309;
   --text-dark-bg: #E4E7EB;
 
-  /* Shadows — warm, low-contrast; cards over warm-white */
+  /* Shadows: soft and low-contrast; cards on white */
   --shadow-sm: 0 1px 2px 0 rgba(30, 33, 38, 0.05);
   --shadow: 0 2px 8px -2px rgba(30, 33, 38, 0.08);
   --shadow-md: 0 8px 20px -6px rgba(30, 33, 38, 0.10);
@@ -120,7 +120,7 @@
 }
 
 ::selection {
-  background: var(--maroon);
+  background: var(--burgundy);
   color: #fff;
 }
 
@@ -166,14 +166,14 @@ code {
   font-family: var(--font-mono);
 }
 
-/* ——— Accessibility ——— */
+/* --- Accessibility --- */
 :focus-visible {
-  outline: 3px solid var(--maroon);
+  outline: 3px solid var(--burgundy);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* On the dark header and footer the maroon ring would vanish, so use white */
+/* On the dark header and footer the burgundy ring would vanish, so use white */
 .navbar :focus-visible,
 .footer :focus-visible {
   outline-color: #FFFFFF;
@@ -210,7 +210,7 @@ code {
   }
 }
 
-/* ——— Shared editorial primitives ——— */
+/* --- Shared editorial primitives --- */
 
 .mono-label {
   font-family: var(--font-mono);
@@ -227,16 +227,16 @@ code {
   margin-right: var(--space-2);
   border-radius: 6px;
   background: var(--chip-bg);
-  color: var(--maroon);
+  color: var(--burgundy);
 }
 
-/* Highlighted words: rounded box, maroon text */
+/* Highlighted words: rounded box, burgundy text */
 .hl {
   display: inline;
   padding: 1px 6px;
   border-radius: var(--radius-chip);
   background: var(--chip-bg);
-  color: var(--maroon);
+  color: var(--burgundy);
   font-weight: 600;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -296,7 +296,7 @@ code {
   :root { --radius-panel: 28px; }
 }
 
-/* Buttons — quiet, bordered, mono */
+/* Buttons, quiet, bordered, mono */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -326,8 +326,8 @@ code {
 }
 
 .btn-primary:hover {
-  background: var(--maroon);
-  border-color: var(--maroon);
+  background: var(--burgundy);
+  border-color: var(--burgundy);
   color: #fff;
 }
 
@@ -337,12 +337,21 @@ code {
   color: var(--ink-deep);
 }
 
+.btn-disabled,
+.btn-disabled:hover {
+  background: var(--panel-soft);
+  border-style: dashed;
+  border-color: var(--hairline-strong);
+  color: var(--ink-muted);
+  cursor: not-allowed;
+}
+
 .btn-large {
   padding: 14px 28px;
   font-size: 0.92rem;
 }
 
-/* ——— Animations (legacy class names preserved) ——— */
+/* --- Animations (legacy class names preserved) --- */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }

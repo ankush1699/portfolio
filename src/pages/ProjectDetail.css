@@ -41,7 +41,7 @@
 
 .project-role-badge {
   background: var(--chip-bg);
-  color: var(--maroon);
+  color: var(--burgundy);
   text-transform: uppercase;
 }
 
@@ -105,7 +105,7 @@
 .metric-badge {
   padding: var(--space-2) var(--space-4);
   background: var(--chip-bg);
-  color: var(--maroon);
+  color: var(--burgundy);
   border: 1px solid transparent;
   border-radius: var(--radius-chip);
   font-weight: 600;

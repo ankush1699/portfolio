@@ -6,18 +6,8 @@ import TagPill from '../components/TagPill'
 import { getProjectBySlug } from '../data/projects'
 import ProjectCover from '../components/ProjectCover'
 
-const LEGACY_SLUGS = {
-  'autonomous-job-search-agent': 'job-search-resume-pipeline',
-}
-
 const ProjectDetail = () => {
   const { slug } = useParams()
-
-  // Links to the old address of the renamed job pipeline project keep working
-  if (LEGACY_SLUGS[slug]) {
-    return <Navigate to={`/projects/${LEGACY_SLUGS[slug]}`} replace />
-  }
-
   const project = getProjectBySlug(slug)
 
   if (!project) {
@@ -72,6 +62,16 @@ const ProjectDetail = () => {
                     className="project-link-btn"
                   >
                     <FiExternalLink /> Demo
+                  </a>
+                )}
+                {project.reportUrl && (
+                  <a
+                    href={project.reportUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link-btn"
+                  >
+                    <FiFileText /> Paper
                   </a>
                 )}
                 {project.report && (

@@ -156,7 +156,13 @@
 
 @media (max-width: 968px) {
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-8);
   }
+}
+
+/* Long email addresses must wrap instead of widening the page on phones */
+.contact-detail-content a,
+.contact-detail-content p {
+  overflow-wrap: anywhere;
 }

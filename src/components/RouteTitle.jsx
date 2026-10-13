@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { getProjectBySlug } from '../data/projects'
 
 const SITE = 'Ankush Chaudhary'
-const HOME_TITLE = `${SITE} | Full-Stack + AI Engineer`
+const HOME_TITLE = `${SITE} | Full-Stack Software Engineer (AI)`
 
 const TITLES = {
   '/projects': 'Projects',

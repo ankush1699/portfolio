@@ -25,8 +25,9 @@ dist-ssr
 *.sln
 *.sw?
 
-# Raw font download (license: free for personal use). Only the converted web fonts in public/fonts are served.
-font/
+# Local-only originals: full-size headshot, old avatar, and the raw Lemon Milk font pack
+# (free for personal use only; just the converted web fonts in public/fonts are served).
+design-assets/originals/
 
-# Original full-size headshot (kept locally, not published)
-source-images/
+# Local tooling
+.claude/

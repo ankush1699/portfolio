@@ -1,183 +1,150 @@
-export const projects = [
+// Projects shown on the site, in display order.
+// Every line was checked against the project's GitHub repo or against what you confirmed.
+// Cover images are 1200 x 627 files in public/covers (made by design-assets/make-covers.py).
+
+const allProjects = [
   {
     slug: 'job-search-resume-pipeline',
     title: 'Job Search & Resume Pipeline',
-    oneLiner: 'Multi-provider LangGraph pipeline that runs red-flag rules and a cache first, scores fit on Groq and local Ollama, and uses Claude only as a fallback and for the final writing.',
+    oneLiner: 'A LangGraph pipeline that scores job postings against my profile and writes a tailored resume and cover letter for the good fits. Groq and Ollama score first, Claude Haiku is the fallback, and Claude Sonnet writes the final text.',
     role: 'Solo Project',
     period: 'Mar 2026 to ongoing',
-    description: 'An end-to-end job search system with three entry modes over one core engine: an automated scraper (SerpApi, jobspy, RSS), a manual paste-a-JD mode, and a Playwright form-filler that stops before submit. Every JD passes a "should-apply" gate first: deterministic visa and clearance red-flag regexes, then a content-hash cache, then an LLM fit rubric. Groq and local Ollama handle scoring first. Claude Haiku is the fallback when their limits are reached. Claude Sonnet writes the final text. A Jinja2-LaTeX pipeline renders print-ready PDFs.',
+    description: 'An end-to-end job search system with three ways in: an automated scraper (LinkedIn, Indeed, Dice, Google Jobs and company career pages), a paste-a-job-description mode, and a Playwright form-filler that stops before submit. Every posting passes a "should-apply" check first: red-flag rules for visa and clearance wording, then a cache, then a fit score from an LLM. Groq and local Ollama handle scoring first. Claude Haiku is the fallback when their limits are reached. Claude Sonnet writes the final text. A Jinja2 and LaTeX pipeline turns it into a print-ready PDF.',
     stack: ['Python', 'LangGraph', 'LangChain', 'Anthropic API', 'Groq', 'Ollama', 'Playwright', 'SerpApi', 'LaTeX', 'Pydantic'],
     outcomes: [
-      'Should-apply gate (skills match, visa red flags, seniority) filters out bad fits before any tailoring work, and verdicts are cached by JD content hash so no posting is scored twice',
-      'Tiered model routing: Groq and local Ollama for scoring, Claude Haiku as the fallback when their limits are reached, and Claude Sonnet only for recruiter-facing prose',
-      'Deterministic truthfulness validators (metric provenance, tech-stack consistency, title accuracy) gate every generated bullet'
+      'Red-flag rules, a cache and a fit score filter out bad matches before any writing starts, and a posting is never scored twice',
+      'Groq and local Ollama score first, Claude Haiku is the fallback when their limits are reached, and Claude Sonnet writes only the final text',
+      'Checks make sure every metric and technology claim in a generated bullet matches my own data'
     ],
-    metrics: ['About 9 cents per tailored application (measured)', 'About half a cent to score a posting', '3 entry modes, 1 engine'],
+    metrics: ['About 9 cents per tailored application', 'Under 1 cent to score a posting', '3 entry modes, 1 engine'],
     repo: 'https://github.com/ankush1699/job-search-resume-pipeline',
     demo: null,
-    cover: 'covers/job-search-resume-pipeline.svg',
-    coverAlt: 'Diagram: entry modes feed a should-apply gate, then keyword and bullet selection, a Claude Sonnet writer, validators, and a LaTeX PDF.',
+    cover: 'covers/job-search-resume-pipeline.png',
+    coverAlt: 'Diagram: entry modes feed a should-apply gate, then tailoring, a Claude Sonnet writer, validators, and a LaTeX PDF.',
     date: '2026-03-01',
     category: 'AI',
-    problem: 'Tailoring a resume per application takes hours, and naive LLM automation burns money tailoring resumes for jobs not worth applying to: visa red flags, wrong seniority, wrong stack.',
-    approach: 'Restructured the pipeline around an early-exit gate: regex red flags (free) → content-addressed JD cache (free) → LLM fit rubric on Groq free tier or local Ollama, with Claude Haiku as the fallback when those limits are reached. Surviving JDs flow through keyword extraction, bullet selection, and a Claude Sonnet writer, with Python validators checking every metric and technology claim against master data before an editor pass that only runs when something is flagged. A Playwright autofill mode fills application forms and hands control back before submit, with no CAPTCHA bypass and no bot-detection evasion.',
-    results: 'A tailored application costs about 9 cents, measured across two runs on one posting (8.7 and 8.9 cents). Scoring a posting costs about half a cent. Red-flag rules and a content-hash cache run before any model call. The same engine serves scraper, manual, and autofill modes, and no posting is ever processed twice.',
-    improvements: ['FastAPI + web dashboard on Fly.io', 'Application outcome tracking to tune the scoring rubric', 'Typst instead of LaTeX for lighter deploys']
-  },
-  {
-    slug: 'personal-budget-management-pyqt6',
-    title: 'Personal Budget Management System',
-    oneLiner: 'Full-stack desktop application for personal finance tracking with Flask REST backend, MongoDB, and PyQt6 interface.',
-    role: 'Team of 4',
-    period: 'Sep 2025 to Nov 2025',
-    description: 'A full-stack desktop application for personal finance tracking and budget management. The system features a Flask REST backend with MongoDB for data persistence and a PyQt6 desktop interface. Users can create accounts with secure authentication, perform CRUD operations on income and expense entries, and view interactive spending dashboards with data visualizations.',
-    stack: ['Python', 'Flask', 'PyQt6', 'MongoDB', 'REST APIs', 'MVC Architecture'],
-    outcomes: [
-      'Secure authentication and CRUD for income and expense entries',
-      'Interactive spending dashboards with data visualizations',
-      'MVC architecture with lazy-loaded database queries for responsive UI'
-    ],
-    metrics: [],
-    repo: 'https://github.com/ankush1699/Personal-Budget-Management-System',
-    demo: null,
-    cover: null,
-    coverStat: { value: 'MVC', label: 'Flask API, MongoDB and a PyQt6 desktop app' },
-    date: '2025-11-01',
-    category: 'Apps',
-    problem: 'Users need a local, full-featured tool to track income and expenses, manage budgets, and visualize spending without relying on cloud-only services.',
-    approach: 'Built as a team of 4 with a Flask REST backend and MongoDB for persistence. The PyQt6 desktop client follows MVC architecture. I contributed to backend API design, database schema, and frontend dashboard components. Lazy-loaded queries keep the interface responsive during large data operations.',
-    results: 'Delivered a working desktop app with secure auth, full CRUD on financial entries, and interactive dashboards. The architecture supports future features like export and reporting.',
-    improvements: ['Add data export and reporting', 'Optional cloud sync', 'Mobile companion for quick entry']
-  },
-  {
-    slug: 'efficient-multitask-nlp-task-vector-composition',
-    title: 'Efficient Multi-Task NLP with Task Vector Composition',
-    oneLiner: 'Single BERT model for sentiment and NER using Task Vector Composition; 87% on SST-2, 74% F1 on CoNLL-2003.',
-    role: 'Team of 2',
-    period: 'Mar 2025 to May 2025',
-    description: 'A multi-task NLP system built on BERT (110M parameters) that handles both sentiment classification and named entity recognition in one model using Task Vector Composition. Dynamic scaling and flexible task prioritization keep a fixed model size while supporting diverse NLP tasks.',
-    stack: ['Python', 'PyTorch', 'BERT', 'NLP', 'SST-2', 'CoNLL-2003'],
-    outcomes: [
-      '87% accuracy on SST-2 sentiment analysis',
-      '74% F1 score on CoNLL-2003 named entity recognition',
-      'Single model for multiple tasks, reducing compute vs. separate models'
-    ],
-    metrics: ['SST-2: 87%', 'NER F1: 74%'],
-    repo: 'https://github.com/ankush1699/Efficient-Multi-Task-NLP-with-Task-Vector-Composition',
-    demo: null,
-    cover: null,
-    coverStat: { value: '87%', label: 'on SST-2 with one 110M-parameter BERT' },
-    date: '2025-05-01',
-    category: 'ML',
-    problem: 'Training and deploying separate models per NLP task increases compute and maintenance. We wanted one model that could handle both sentiment and NER efficiently.',
-    approach: 'Used Task Vector Composition on BERT: dynamic scaling and task prioritization so a single 110M-parameter model supports sentiment (SST-2) and NER (CoNLL-2003) without separate training pipelines.',
-    results: 'Achieved 87% accuracy on SST-2 and 74% F1 on CoNLL-2003 with one model. The approach reduces training and deployment overhead compared to task-specific models.',
-    improvements: ['Add more tasks (e.g. QA)', 'Better task balancing', 'Quantization for smaller footprint']
+    problem: 'Tailoring a resume for each application takes hours, and simple LLM automation wastes money tailoring resumes for jobs not worth applying to: visa red flags, wrong seniority, wrong stack.',
+    approach: 'Built the pipeline around an early exit: red-flag rules (free), then a cache of past verdicts (free), then a fit score from Groq or local Ollama, with Claude Haiku as the fallback when those limits are reached. Postings that pass go through keyword extraction, bullet selection and a Claude Sonnet writer. Python checks compare every metric and technology claim with my own data before an editing pass that only runs when something is flagged. The autofill mode fills application forms and hands control back before submit, with no CAPTCHA bypass and no bot-detection evasion.',
+    results: 'A tailored application costs about 9 cents, and scoring a posting costs under 1 cent. Red-flag rules and a cache run before any model call. The same engine serves the scraper, manual and autofill modes, and no posting is processed twice.',
+    improvements: ['FastAPI + web dashboard on Fly.io', 'Application outcome tracking to tune the scoring', 'Typst instead of LaTeX for lighter deploys']
   },
   {
     slug: 'zero-knowledge-password-authentication',
     title: 'Zero-Knowledge Password Authentication',
-    oneLiner: 'Authentication that verifies passwords without exposing them to the server, using ZK proofs (Circom, Groth16, Poseidon).',
+    oneLiner: 'A login that checks a password without ever sending it to the server, using zero-knowledge proofs.',
     role: 'Team of 2',
-    period: 'Mar 2025 to May 2025',
-    description: 'A secure authentication system that verifies user passwords without ever exposing them to the server, using zero-knowledge proofs. The Node.js backend handles proof generation and verification with Circom circuits (Groth16, Poseidon). The React frontend runs client-side proof generation so the password never leaves the browser.',
-    stack: ['Circom', 'SnarkJS', 'Groth16', 'Poseidon Hash', 'Node.js', 'React.js', 'Cryptography'],
+    period: 'Jan 2025 to May 2025',
+    description: 'A login system that proves a user knows their password without the password ever leaving the browser. The browser builds a proof with SnarkJS from a Circom circuit that uses Poseidon hashing, and a Node.js and Express server verifies the proof. The frontend is a React app.',
+    stack: ['Circom', 'SnarkJS', 'Poseidon hash', 'Node.js', 'React'],
     outcomes: [
-      'Server never receives or stores plaintext passwords',
-      'Resistant to phishing and replay by design',
-      'Client-side proof generation; only proofs sent to server'
+      'The server verifies a proof and never sees the plaintext password',
+      'Proofs are built in the browser, so only the proof is sent over the network',
+      'Poseidon hashing, a hash designed to be cheap inside zero-knowledge circuits'
     ],
     metrics: [],
     repo: 'https://github.com/ankush1699/Zero-Knowledge-Password-Authentication',
     demo: null,
-    cover: null,
-    coverStat: { value: '0', label: 'plaintext passwords ever sent to the server' },
+    cover: 'covers/zero-knowledge-password-authentication.png',
+    coverAlt: 'Diagram: the browser builds a proof with SnarkJS and sends only the proof to a Node.js server, which verifies it.',
     date: '2025-05-01',
     category: 'Security/ZK',
-    problem: 'Traditional login sends passwords to the server, creating phishing and breach risks. We wanted to prove knowledge of the password without transmitting it.',
-    approach: 'Designed Circom circuits with Groth16 and Poseidon hashing. Node.js backend verifies proofs; React frontend generates proofs in the browser so the credential never leaves the client. The server only sees cryptographic proofs.',
-    results: 'Built a working flow where users authenticate by proving knowledge of the password. The design avoids plaintext on the server and mitigates phishing and replay attacks.',
-    improvements: ['Faster proof generation', 'Multi-factor options', 'Clearer UX for non-experts']
+    problem: 'Normal logins send the password to the server, which creates breach and phishing risk. The goal was to prove knowledge of the password without sending it.',
+    approach: 'Wrote a Circom circuit that checks a Poseidon hash of the password and generates keys for the Groth16 proof system. The React frontend builds the proof in the browser with SnarkJS. The Node.js and Express backend checks the proof against the verification key, and registration stores only the hash.',
+    results: 'A working login flow where a user signs in by proving they know the password, and the server never receives it.',
+    improvements: ['Faster proof generation', 'Multi-factor options', 'Clearer sign-in experience for non-experts']
   },
   {
+    slug: 'efficient-multitask-nlp-task-vector-composition',
+    title: 'Efficient Multi-Task NLP with Task Vector Composition',
+    oneLiner: 'Fine-tunes BERT separately for sentiment and for named entity recognition, then merges the two task vectors into one model.',
+    role: 'Team of 2',
+    period: 'Mar 2025 to May 2025',
+    description: 'A multi-task NLP project built on BERT with PyTorch and Hugging Face Transformers. I fine-tuned the model separately on SST-2 sentiment and on CoNLL-2003 named entity recognition, extracted a task vector from each, and merged them into a single 110M-parameter model.',
+    stack: ['Python', 'PyTorch', 'Hugging Face Transformers', 'BERT', 'Jupyter Notebook'],
+    outcomes: [
+      'Fine-tuned BERT separately on SST-2 sentiment and CoNLL-2003 named entity recognition',
+      'Extracted a task vector from each fine-tuned model and merged them into one model',
+      'Evaluated the merged model on both tasks in a notebook'
+    ],
+    metrics: [],
+    repo: 'https://github.com/ankush1699/Efficient-Multi-Task-NLP-with-Task-Vector-Composition',
+    demo: null,
+    cover: 'covers/efficient-multitask-nlp-task-vector-composition.png',
+    coverAlt: 'Diagram: two BERT models fine-tuned on SST-2 and CoNLL-2003 give two task vectors, which merge into one model.',
+    date: '2025-05-01',
+    category: 'ML',
+    problem: 'Training and running a separate model for each NLP task adds cost. The question was whether one model could carry both a sentiment task and a named entity task.',
+    approach: 'Fine-tuned BERT on each task, took the difference between the fine-tuned and the original weights as a task vector, and merged the two vectors. Then applied the merged vector to the base model and evaluated it on both tasks.',
+    results: 'The repository holds the full pipeline as notebooks: fine-tuning for each task, extracting and merging the task vectors, applying the merged vector, and evaluating the result.',
+    improvements: ['Add more tasks (for example question answering)', 'Better balance between the tasks', 'Quantization for a smaller model']
+  },
+  {
+    slug: 'personal-budget-management-pyqt6',
+    title: 'Personal Budget Management System',
+    oneLiner: 'A desktop app that reads bank statements, sorts the spending into categories, and shows where the money goes.',
+    role: 'Team of 4',
+    period: 'Sep 2025 to Nov 2025',
+    description: 'A desktop app for tracking personal spending. You create an account, upload bank statements, and the app sorts the transactions into categories and shows the spending in charts. It is written in Python with a PyQt6 interface and stores its data in MongoDB.',
+    stack: ['Python', 'PyQt6', 'MongoDB'],
+    outcomes: [
+      'Users create an account and upload their bank statements',
+      'Transactions are sorted into spending categories automatically',
+      'Charts show where the money goes'
+    ],
+    metrics: [],
+    repo: 'https://github.com/ankush1699/Personal-Budget-Management-System',
+    demo: null,
+    cover: 'covers/personal-budget-management-pyqt6.png',
+    coverAlt: 'Diagram: a bank statement is uploaded, transactions are categorized, and spending charts are shown in a PyQt6 desktop app.',
+    date: '2025-11-01',
+    category: 'Apps',
+    problem: 'Reading a bank statement line by line makes it hard to see where the money goes.',
+    approach: 'A team of four built a PyQt6 desktop app on a Python core. The core reads an uploaded bank statement, sorts the transactions into categories, and saves them in MongoDB. The interface handles accounts and shows the spending charts.',
+    results: 'A working desktop app: create an account, upload a bank statement, and see spending by category in charts.'
+  },
+  // TODO(verify): the two projects below are hidden from the site. Their old text named a
+  // deep learning framework and accuracy numbers that do not match your other write-ups.
+  // Check each against its report, fix the text, then remove `hidden: true`.
+  {
     slug: 'handwritten-text-recognition-cnns',
+    hidden: true,
     title: 'Handwritten Text Recognition with CNNs',
-    oneLiner: 'CNN-based system for converting handwritten text images to digital text; 94% accuracy on IAM dataset with GPU training.',
+    oneLiner: 'A CNN-based system that converts images of handwritten text into digital text.',
     role: 'Team of 2',
     period: 'Oct 2024 to Dec 2024',
-    description: 'A convolutional neural network system that converts handwritten text images into digital text. Trained on the IAM handwriting dataset with custom preprocessing and GPU (CUDA) acceleration. Explored multiple CNN architectures and preprocessing strategies to improve recognition across diverse handwriting styles.',
-    stack: ['TensorFlow', 'CNN', 'Computer Vision', 'IAM Dataset', 'CUDA'],
-    outcomes: [
-      '94% accuracy on IAM handwriting dataset',
-      'Custom preprocessing for better input quality',
-      'GPU-accelerated training for efficient iteration'
-    ],
-    metrics: ['Accuracy: 94%'],
+    description: 'A convolutional neural network system that converts handwritten text images into digital text, with custom preprocessing and GPU training.',
+    stack: ['CNN', 'Computer Vision'],
+    outcomes: [],
+    metrics: [],
     repo: null,
     demo: 'https://youtu.be/jOUDS9pHPt4?si=6AD3dA7FBDjKpk48',
     cover: null,
-    coverStat: { value: '94%', label: 'accuracy on the IAM handwriting dataset' },
     date: '2024-12-01',
-    category: 'CV',
-    problem: 'Handwritten text varies widely in style and quality. We needed a robust system to recognize it accurately and efficiently.',
-    approach: 'Trained CNNs on the IAM dataset with custom preprocessing to normalize and improve input quality. Used GPU with CUDA to handle the dataset size. Tested different CNN designs and preprocessing choices to optimize accuracy.',
-    results: 'Reached 94% accuracy on the IAM dataset. The pipeline handles varied handwriting and runs in a reasonable time thanks to GPU acceleration.',
-    improvements: ['Support for cursive and degraded images', 'Real-time recognition', 'Multi-language expansion']
-  },
-  {
-    slug: 'predicting-chaotic-traffic-flows-smart-cities',
-    title: 'Predicting Chaotic Traffic Flows in Smart Cities',
-    oneLiner: 'LSTM-based traffic flow prediction using chaos theory and real-time data; 87% accuracy, sub-2s inference.',
-    role: 'Solo Project',
-    period: 'Oct 2024 to Dec 2024',
-    description: 'A traffic flow prediction system using LSTM neural networks with real-time traffic and weather data. The model uses ideas from chaos theory to capture nonlinear traffic behavior. Achieved 87% prediction accuracy with sub-2-second inference for congestion forecasting.',
-    stack: ['Python', 'LSTM', 'Chaos Theory', 'Time Series Forecasting'],
-    outcomes: [
-      '87% prediction accuracy for traffic flow',
-      'Sub-2-second inference for real-time use',
-      'Combination of chaos theory and deep learning for nonlinear patterns'
-    ],
-    metrics: ['Accuracy: 87%', 'Inference: <2s'],
-    repo: null,
-    demo: null,
-    report: 'Predicting Traffic Flows in Blacksburg.pdf',
-    cover: null,
-    coverStat: { value: '87%', label: 'prediction accuracy, under 2 seconds to infer' },
-    date: '2024-12-01',
-    category: 'ML',
-    problem: 'Urban traffic is highly nonlinear and chaotic. We wanted a model that could forecast congestion in near real time for planning and management.',
-    approach: 'Built LSTM models fed with real-time traffic and weather data. Integrated chaos-theory concepts to model nonlinear dynamics. Tuned for both accuracy and low latency so the system could support real-time forecasting.',
-    results: 'Reached 87% accuracy with inference under 2 seconds. The approach shows how chaos-inspired modeling and deep learning can improve traffic prediction for smart city applications.',
-    improvements: ['More data sources and regions', 'Uncertainty estimates', 'Integration with traffic control APIs']
+    category: 'CV'
   },
   {
     slug: 'anime-character-generator-gans',
+    hidden: true,
     title: 'Anime Character Generator Using GANs',
-    oneLiner: 'GAN trained on 65K+ anime images; FID 18.5, controllable hair color and expressions.',
+    oneLiner: 'A GAN that generates anime-style characters with controllable features.',
     role: 'Team of 3',
     period: 'Oct 2024 to Dec 2024',
-    description: 'A generative adversarial network trained on 65,000+ anime character images to generate new anime-style characters. The model achieved an FID (Fréchet Inception Distance) of 18.5. Batch normalization and learning rate tuning stabilized training and improved convergence. The generator supports controllable features such as hair color and facial expressions.',
-    stack: ['TensorFlow', 'GAN', 'Deep Learning', 'Image Generation', 'Batch Normalization'],
-    outcomes: [
-      'FID score of 18.5 for image quality',
-      'Stable training via batch normalization and learning rate tuning',
-      'Controllable generation of hair color and expressions'
-    ],
-    metrics: ['FID: 18.5'],
+    description: 'A generative adversarial network trained on anime character images that generates new anime-style characters with controllable features such as hair color and facial expressions.',
+    stack: ['GAN', 'Deep Learning', 'Image Generation'],
+    outcomes: [],
+    metrics: [],
     repo: null,
     demo: null,
     report: 'AML_REPORT.pdf',
     cover: null,
-    coverStat: { value: '18.5', label: 'FID score, trained on 65K+ anime images' },
     date: '2024-12-01',
-    category: 'ML',
-    problem: 'Generating diverse, high-quality anime characters with control over specific attributes (e.g. hair, expression) is useful for games and content creation.',
-    approach: 'Trained a GAN on a large anime image dataset. Used batch normalization and learning rate scheduling to stabilize training. Implemented controllable generation by steering the latent space for hair color and expression.',
-    results: 'Achieved FID 18.5, indicating strong generation quality. Controllable attributes work in practice, with potential use in games and creative tools.',
-    improvements: ['Higher resolution (e.g. 512×512)', 'More controllable attributes', 'Style transfer and mixing']
+    category: 'ML'
   }
 ]
 
+// The site only ever sees the visible projects.
+export const projects = allProjects.filter((project) => !project.hidden)
+
 export const getProjectBySlug = (slug) => {
-  return projects.find(project => project.slug === slug)
+  return projects.find((project) => project.slug === slug)
 }

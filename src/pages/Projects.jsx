@@ -9,7 +9,7 @@ import ProjectCover from '../components/ProjectCover'
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
 
-  const categories = ['All', 'AI', 'ML', 'CV', 'Security/ZK', 'Apps']
+  const categories = ['All', ...new Set(projects.map((p) => p.category))]
 
   const filteredProjects = selectedCategory === 'All'
     ? projects

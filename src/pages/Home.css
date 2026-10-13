@@ -1,4 +1,4 @@
-/* ——— Hero ——— */
+/* --- Hero --- */
 .hero {
   padding: var(--space-12) 0 var(--space-16);
   background: transparent;
@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: center;
   background: #FFFFFF;
-  color: var(--maroon);
+  color: var(--burgundy);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(2.6rem, 7vw, 5rem);
@@ -53,7 +53,7 @@
 }
 
 .hero-name-accent {
-  color: var(--maroon);
+  color: var(--burgundy);
 }
 
 .hero-role-row {
@@ -67,7 +67,7 @@
   content: '';
   display: block;
   width: 140px;
-  border-top: 2px dashed var(--maroon);
+  border-top: 2px dashed var(--burgundy);
 }
 
 .hero-role {
@@ -131,7 +131,7 @@
   border-color: var(--blue-deep);
 }
 
-/* ——— Section head (shared) ——— */
+/* --- Section head (shared) --- */
 .section-head {
   display: flex;
   justify-content: space-between;
@@ -156,7 +156,7 @@
   color: var(--blue);
 }
 
-/* ——— Numbers and core stack ——— */
+/* --- Numbers and core stack --- */
 .proof {
   padding: 0 0 var(--space-8);
 }
@@ -182,7 +182,7 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
-  color: var(--maroon);
+  color: var(--burgundy);
 }
 
 .stat-label {
@@ -206,7 +206,7 @@
   list-style: none;
 }
 
-/* ——— 01 Selected work ——— */
+/* --- 01 Selected work --- */
 .work {
   padding: var(--space-8) 0;
 }
@@ -254,7 +254,7 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.05em;
-  color: var(--maroon);
+  color: var(--burgundy);
   background: var(--chip-bg);
   padding: 4px 10px;
   border: 1px solid transparent;
@@ -274,7 +274,7 @@
   transform: translate(2px, -2px);
 }
 
-/* ——— 02 Experience ledger ——— */
+/* --- 02 Experience ledger --- */
 .ledger {
   padding: var(--space-8) 0;
 }
@@ -311,12 +311,13 @@
   font-size: 1.02rem;
 }
 
-/* ——— 03 Research strip ——— */
+/* --- 03 Research strip --- */
 .research-strip {
   padding: var(--space-8) 0;
 }
 
 .research-feature {
+  margin-bottom: var(--space-4);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -349,7 +350,7 @@
   white-space: nowrap;
 }
 
-/* ——— Closing ——— */
+/* --- Closing --- */
 .closing {
   padding: var(--space-16) 0;
 }
@@ -365,7 +366,7 @@
   gap: var(--space-4);
 }
 
-/* ——— Responsive ——— */
+/* --- Responsive --- */
 @media (max-width: 1100px) {
   .work-row {
     grid-template-columns: minmax(0, 1fr) 200px;
