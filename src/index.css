@@ -57,7 +57,7 @@
   --blue-deep: var(--burgundy-deep); /* hover / pressed */
 
   /* Header and footer: dark charcoal, light text (all pairs 7:1 or better).
-     The logo is logo-name-on-dark.png (name only, "Chaudhary" in light gray) plus live role text. */
+     The logo is logo-name-on-dark.png (name only, all white) plus live role text. */
   --chrome-bg: #2A2E34;
   --chrome-border: #484E57;
   --chrome-text: #FFFFFF;
