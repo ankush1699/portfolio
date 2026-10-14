@@ -60,9 +60,9 @@ design-assets/
 
 ## Common edits
 
-- **Resume (placeholder right now):** `resumePdf` in `src/data/profile.js` is `null`, so the site shows a clearly
-  marked "Résumé coming soon" button and page. To switch it on, put the final PDF in `public/` and set `resumePdf`
-  to its filename.
+- **Resume:** put the PDF in `public/` and set `resumePdf` in `src/data/profile.js` to its filename (now
+  `Ankush_Chaudhary_Resume.pdf`). To replace it, overwrite the file. Set `resumePdf` to `null` to show a
+  "Résumé coming soon" placeholder instead.
 - **Add a project:** add an entry to `src/data/projects.js` (copy an existing one). The list order is the display order.
   - Thumbnail: add a diagram to `design-assets/make-covers.py`, run `python3 design-assets/make-covers.py`
     (needs Pillow and the macOS Avenir Next font), and set `cover` to the new file. Or drop in your own 1200 x 627 image.

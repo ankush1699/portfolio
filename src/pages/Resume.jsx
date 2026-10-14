@@ -5,8 +5,7 @@ import { FiDownload } from 'react-icons/fi'
 import { personal } from '../data/profile'
 
 const Resume = () => {
-  // TODO(resume): PLACEHOLDER. While personal.resumePdf is null (src/data/profile.js),
-  // this page shows a notice instead of a PDF. Set the filename there once the final PDF is in public/.
+  // While personal.resumePdf is null (src/data/profile.js), this page shows a notice instead of a PDF.
   const resumeUrl = personal.resumePdf ? `${import.meta.env.BASE_URL}${personal.resumePdf}` : null
 
   return (

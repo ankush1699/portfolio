@@ -11,11 +11,9 @@ export const personal = {
   email: 'ankushchaudhary.ac99@gmail.com',
   github: 'https://github.com/ankush1699/',
   linkedin: 'https://www.linkedin.com/in/ankushchaudhary01/',
-  // TODO(resume): PLACEHOLDER. No resume is linked until the final PDF is ready.
-  // When it is: put the PDF in public/, then set this to its filename, for example
-  //   resumePdf: 'Ankush_Chaudhary_SWE_Resume.pdf',
-  // The Resume page and the buttons on the home page switch back on by themselves.
-  resumePdf: null,
+  // File in public/ that the Resume page and the home page buttons open and download.
+  // Set it to null to show the "coming soon" placeholder instead.
+  resumePdf: 'Ankush_Chaudhary_Resume.pdf',
 }
 
 export const experience = [
@@ -27,6 +25,7 @@ export const experience = [
     summary: 'Part-time fellowship red-teaming large language models.',
     bullets: [
       'Red-teamed large language models by writing prompts designed to make them fail on algorithm and math problems.',
+      'Documented each failure with the prompt, the model’s answer and what was wrong.',
     ],
     tech: ['Prompt engineering', 'Adversarial testing'],
   },
@@ -49,6 +48,7 @@ export const experience = [
     summary: 'Only technical owner of the organization’s web platform.',
     bullets: [
       'Built the organization’s web platform on WordPress with custom HTML and CSS, designed in Figma, as its only technical owner.',
+      'Set up Google Analytics and automated workflows with Make.com, such as sending web-form entries to spreadsheets.',
       'Reached Lighthouse scores of 91 for accessibility and 92 for SEO.',
     ],
     tech: ['WordPress', 'Custom CSS/HTML', 'Google Analytics', 'Make.com', 'Figma'],
