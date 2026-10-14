@@ -58,7 +58,7 @@ const allProjects = [
     title: 'Efficient Multi-Task NLP with Task Vector Composition',
     oneLiner: 'Fine-tunes BERT separately for sentiment and for named entity recognition, then merges the two task vectors into one model.',
     role: 'Team of 2',
-    period: 'Mar 2025 to May 2025',
+    period: 'Jan 2025 to May 2025',
     description: 'A multi-task NLP project built on BERT with PyTorch and Hugging Face Transformers. I fine-tuned the model separately on SST-2 sentiment and on CoNLL-2003 named entity recognition, extracted a task vector from each, and merged them into a single 110M-parameter model.',
     stack: ['Python', 'PyTorch', 'Hugging Face Transformers', 'BERT', 'Jupyter Notebook'],
     outcomes: [
@@ -86,7 +86,7 @@ const allProjects = [
     title: 'Personal Budget Management System',
     oneLiner: 'A desktop app that reads bank statements, sorts the spending into categories, and shows where the money goes.',
     role: 'Team of 4',
-    period: 'Sep 2025 to Nov 2025',
+    period: 'Aug 2025 to Dec 2025',
     description: 'A desktop app for tracking personal spending. You create an account, upload bank statements, and the app sorts the transactions into categories and shows the spending in charts. It is written in Python with a PyQt6 interface and stores its data in MongoDB.',
     stack: ['Python', 'PyQt6', 'MongoDB'],
     outcomes: [
@@ -99,7 +99,7 @@ const allProjects = [
     demo: null,
     cover: 'covers/personal-budget-management-pyqt6.png',
     coverAlt: 'Diagram: a bank statement is uploaded, transactions are categorized, and spending charts are shown in a PyQt6 desktop app.',
-    date: '2025-11-01',
+    date: '2025-12-01',
     category: 'Apps',
     problem: 'Reading a bank statement line by line makes it hard to see where the money goes.',
     approach: 'A team of four built a PyQt6 desktop app on a Python core. The core reads an uploaded bank statement, sorts the transactions into categories, and saves them in MongoDB. The interface handles accounts and shows the spending charts.',

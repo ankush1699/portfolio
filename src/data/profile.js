@@ -83,7 +83,7 @@ export const education = [
   },
   {
     degree: 'B.E. Computer Science & Engineering',
-    school: 'SGB Amravati University, India',
+    school: 'Prof. Ram Meghe Institute of Technology & Research, India (affiliated to SGB Amravati University)',
     period: 'Aug 2017 to Aug 2020',
     detail: 'CGPA 8.89/10.0',
   },
