@@ -76,7 +76,7 @@ c.arrow(xs[1] + bw + 4, y1 + bh / 2, xs[2] - 6, y1 + bh / 2)
 c.arrow(xs[2] + bw / 2, y1 + bh + 4, xs[2] + bw / 2, y2 - 6)
 c.arrow(xs[2] - 4, y2 + bh / 2, xs[1] + bw + 6, y2 + bh / 2)
 c.arrow(xs[1] - 4, y2 + bh / 2, xs[0] + bw + 6, y2 + bh / 2)
-c.text(60, 520, 'Groq and local Ollama score first. Claude Haiku is the fallback.', NOTE, INK)
+c.text(60, 520, 'Claude Haiku scores first. Groq, then Ollama, are the fallbacks.', NOTE, INK)
 c.text(60, 562, 'Red-flag rules and a cache run before any model call.', NOTE, MUTED)
 c.save('public/covers/job-search-resume-pipeline.png')
 

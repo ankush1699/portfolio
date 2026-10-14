@@ -33,7 +33,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/*--- Hero--- */}
+      {/* --- Hero --- */}
       <section className="hero">
         <div className="section-container hero-grid panel">
           <motion.div
@@ -100,7 +100,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/*--- Numbers and core stack--- */}
+      {/* --- Numbers and core stack --- */}
       <section className="proof">
         <div className="section-container">
           <div className="stats-grid">
@@ -122,7 +122,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/*--- 01 Selected work--- */}
+      {/* --- 01 Selected work --- */}
       <section className="work">
         <div className="section-container panel">
           <div className="section-head">
@@ -152,7 +152,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/*--- 02 Experience ledger--- */}
+      {/* --- 02 Experience ledger --- */}
       <section className="ledger">
         <div className="section-container">
           <div className="section-head">
@@ -173,7 +173,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/*--- 03 Research--- */}
+      {/* --- 03 Research --- */}
       <section className="research-strip">
         <div className="section-container panel">
           <div className="section-head">
@@ -199,7 +199,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/*--- Closing CTA--- */}
+      {/* --- Closing CTA --- */}
       <section className="closing">
         <div className="section-container">
           <motion.div {...fadeUp}>

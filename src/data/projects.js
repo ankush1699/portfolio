@@ -6,14 +6,14 @@ const allProjects = [
   {
     slug: 'job-search-resume-pipeline',
     title: 'Job Search & Resume Pipeline',
-    oneLiner: 'A LangGraph pipeline that scores job postings against my profile and writes a tailored resume and cover letter for the good fits. Groq and Ollama score first, Claude Haiku is the fallback, and Claude Sonnet writes the final text.',
+    oneLiner: 'A LangGraph pipeline that scores job postings against my profile and writes a tailored resume and cover letter for the good fits. Claude Haiku 4.5 handles keyword extraction, strategy, editing and fit scoring first. If it is unavailable or limited, the pipeline falls back to Groq, then local Ollama. Claude Sonnet 4.6 writes the final text.',
     role: 'Solo Project',
     period: 'Mar 2026 to ongoing',
-    description: 'An end-to-end job search system with three ways in: an automated scraper (LinkedIn, Indeed, Dice, Google Jobs and company career pages), a paste-a-job-description mode, and a Playwright form-filler that stops before submit. Every posting passes a "should-apply" check first: red-flag rules for visa and clearance wording, then a cache, then a fit score from an LLM. Groq and local Ollama handle scoring first. Claude Haiku is the fallback when their limits are reached. Claude Sonnet writes the final text. A Jinja2 and LaTeX pipeline turns it into a print-ready PDF.',
+    description: 'An end-to-end job search system with three ways in: an automated scraper (LinkedIn, Indeed, Dice, Google Jobs and company career pages), a paste-a-job-description mode, and a Playwright form-filler that stops before submit. Every posting passes a "should-apply" check first: red-flag rules for visa and clearance wording, then a cache, then a fit score from an LLM. Claude Haiku 4.5 handles keyword extraction, strategy, editing and fit scoring first. If it is unavailable or limited, the pipeline falls back to Groq, then local Ollama. Claude Sonnet 4.6 writes the final resume and cover letter text. A Jinja2 and LaTeX pipeline turns it into a print-ready PDF.',
     stack: ['Python', 'LangGraph', 'LangChain', 'Anthropic API', 'Groq', 'Ollama', 'Playwright', 'SerpApi', 'LaTeX', 'Pydantic'],
     outcomes: [
       'Red-flag rules, a cache and a fit score filter out bad matches before any writing starts, and a posting is never scored twice',
-      'Groq and local Ollama score first, Claude Haiku is the fallback when their limits are reached, and Claude Sonnet writes only the final text',
+      'Claude Haiku 4.5 handles scoring, keyword extraction, strategy and editing, with Groq and then local Ollama as fallbacks, and Claude Sonnet 4.6 writes only the final text',
       'Checks make sure every metric and technology claim in a generated bullet matches my own data'
     ],
     metrics: ['About 9 cents per tailored application', 'Under 1 cent to score a posting', '3 entry modes, 1 engine'],
@@ -24,7 +24,7 @@ const allProjects = [
     date: '2026-03-01',
     category: 'AI',
     problem: 'Tailoring a resume for each application takes hours, and simple LLM automation wastes money tailoring resumes for jobs not worth applying to: visa red flags, wrong seniority, wrong stack.',
-    approach: 'Built the pipeline around an early exit: red-flag rules (free), then a cache of past verdicts (free), then a fit score from Groq or local Ollama, with Claude Haiku as the fallback when those limits are reached. Postings that pass go through keyword extraction, bullet selection and a Claude Sonnet writer. Python checks compare every metric and technology claim with my own data before an editing pass that only runs when something is flagged. The autofill mode fills application forms and hands control back before submit, with no CAPTCHA bypass and no bot-detection evasion.',
+    approach: 'Built the pipeline around an early exit: red-flag rules (free), then a cache of past verdicts (free), then a fit score from Claude Haiku 4.5, with Groq and then local Ollama as fallbacks when it is unavailable or limited. Postings that pass go through keyword extraction, strategy and editing on Haiku, and a Claude Sonnet 4.6 writer for the final text. Python checks compare every metric and technology claim with my own data before an editing pass that only runs when something is flagged. The autofill mode fills application forms and hands control back before submit, with no CAPTCHA bypass and no bot-detection evasion.',
     results: 'A tailored application costs about 9 cents, and scoring a posting costs under 1 cent. Red-flag rules and a cache run before any model call. The same engine serves the scraper, manual and autofill modes, and no posting is processed twice.',
     improvements: ['FastAPI + web dashboard on Fly.io', 'Application outcome tracking to tune the scoring', 'Typst instead of LaTeX for lighter deploys']
   },
@@ -64,9 +64,12 @@ const allProjects = [
     outcomes: [
       'Fine-tuned BERT separately on SST-2 sentiment and CoNLL-2003 named entity recognition',
       'Extracted a task vector from each fine-tuned model and merged them into one model',
-      'Evaluated the merged model on both tasks in a notebook'
+      'Evaluated the merged model on both tasks and compared it with the single-task models'
     ],
-    metrics: [],
+    metrics: [
+      'SST-2: merged 87% accuracy, 88% F1 (single-task 92%, 93%)',
+      'CoNLL-2003 NER: merged 75% precision, 73% recall, 74% F1 (single-task 88%, 90%, 89%)'
+    ],
     repo: 'https://github.com/ankush1699/Efficient-Multi-Task-NLP-with-Task-Vector-Composition',
     demo: null,
     cover: 'covers/efficient-multitask-nlp-task-vector-composition.png',
@@ -75,7 +78,7 @@ const allProjects = [
     category: 'ML',
     problem: 'Training and running a separate model for each NLP task adds cost. The question was whether one model could carry both a sentiment task and a named entity task.',
     approach: 'Fine-tuned BERT on each task, took the difference between the fine-tuned and the original weights as a task vector, and merged the two vectors. Then applied the merged vector to the base model and evaluated it on both tasks.',
-    results: 'The repository holds the full pipeline as notebooks: fine-tuning for each task, extracting and merging the task vectors, applying the merged vector, and evaluating the result.',
+    results: 'On SST-2 the merged model reached 87% accuracy and 88% F1, against 92% and 93% for the single-task model. On CoNLL-2003 NER it reached 75% precision, 73% recall and 74% F1, against 88%, 90% and 89% for the single-task model. The merged model trades some accuracy for being one model instead of two. The repository holds the full pipeline as notebooks.',
     improvements: ['Add more tasks (for example question answering)', 'Better balance between the tasks', 'Quantization for a smaller model']
   },
   {

@@ -24,13 +24,13 @@ const Research = () => {
     {
       title: 'Task-Vector Composition for Multitask BERT',
       summary:
-        'Fine-tuning BERT separately on sentiment (SST-2) and named entity recognition (CoNLL-2003), taking a task vector from each, and merging them into one 110M-parameter model. The notebooks cover fine-tuning, merging and evaluation.',
+        'Fine-tuning BERT separately on sentiment (SST-2) and named entity recognition (CoNLL-2003), taking a task vector from each, and merging them into one 110M-parameter model. The merged model trades some accuracy for being one model: 87% accuracy on SST-2 against 92% for the single-task model, and 74% F1 on CoNLL-2003 against 89%. The notebooks cover fine-tuning, merging and evaluation.',
       tags: ['NLP', 'BERT', 'PyTorch', 'Multitask Learning'],
     },
     {
       title: 'Cost-Gated LLM Agent Pipelines',
       summary:
-        'Design notes from the automated job search pipeline: early-exit scoring gates, content-addressed caching, and tiered model routing (Groq and local Ollama for scoring, Claude Haiku as the fallback, Claude Sonnet for the final text) to keep a tailored application near 9 cents.',
+        'Design notes from the automated job search pipeline: early-exit scoring gates, content-addressed caching, and tiered model routing (Claude Haiku 4.5 first, with Groq and then local Ollama as fallbacks, and Claude Sonnet 4.6 for the final text) to keep a tailored application near 9 cents.',
       tags: ['LLM Agents', 'LangGraph', 'Cost Optimization'],
     },
     {

@@ -32,11 +32,13 @@ const Experience = () => {
               <div className="exp-detail">
                 <h3 className="exp-title">{e.title}</h3>
                 <p className="exp-company">{e.company}</p>
-                <div className="exp-tech">
-                  {e.tech.map((t) => (
-                    <span key={t} className="work-metric">{t}</span>
-                  ))}
-                </div>
+                {e.tech.length > 0 && (
+                  <div className="exp-tech">
+                    {e.tech.map((t) => (
+                      <span key={t} className="work-metric">{t}</span>
+                    ))}
+                  </div>
+                )}
                 <ul className="exp-bullets">
                   {e.bullets.map((b, i) => (
                     <li key={i}>{b}</li>

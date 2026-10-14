@@ -11,7 +11,6 @@ export const personal = {
   email: 'ankushchaudhary.ac99@gmail.com',
   github: 'https://github.com/ankush1699/',
   linkedin: 'https://www.linkedin.com/in/ankushchaudhary01/',
-  availability: 'Open to full-time SWE / AI engineering roles · F-1 OPT, available now',
   // TODO(resume): PLACEHOLDER. No resume is linked until the final PDF is ready.
   // When it is: put the PDF in public/, then set this to its filename, for example
   //   resumePdf: 'Ankush_Chaudhary_SWE_Resume.pdf',
@@ -27,22 +26,32 @@ export const experience = [
     location: 'Remote',
     summary: 'Part-time fellowship red-teaming large language models.',
     bullets: [
-      'Wrote adversarial prompts aimed at the limits of the models’ reasoning, and got confidently wrong answers on hard data structure, algorithm and math problems.',
+      'Red-teamed large language models by writing prompts designed to make them fail on algorithm and math problems.',
     ],
-    tech: ['LLM red-teaming', 'Prompt writing', 'Adversarial testing'],
+    tech: ['Prompt engineering', 'Adversarial testing'],
+  },
+  {
+    title: 'Graduate Grader',
+    company: 'Virginia Tech',
+    period: 'Aug 2025 to Dec 2025',
+    location: 'Blacksburg, VA',
+    summary: 'Graded assignments and exams for an undergraduate course.',
+    bullets: [
+      'Graded assignments and exams for the undergraduate course Introduction to ECE Concepts.',
+    ],
+    tech: [],
   },
   {
     title: 'Lead Software Engineering Intern',
     company: 'Shifting Waters Leadership Institute',
     period: 'Jul 2025 to Sep 2025',
-    location: 'Richmond, VA · Remote',
-    summary: 'Sole technical owner of the organization’s website, working directly with the CEO.',
+    location: 'Richmond, VA',
+    summary: 'Only technical owner of the organization’s web platform.',
     bullets: [
-      'Was the only technical owner of the website. I gathered requirements with the CEO, designed it in Figma, and mentored one junior engineer.',
-      'Built the site in WordPress with custom HTML and CSS, and added Google Analytics. Lighthouse scored it 91 for accessibility and 92 for SEO.',
-      'Set up Make.com automation that sends form submissions to spreadsheets for executive reporting.',
+      'Built the organization’s web platform on WordPress with custom HTML and CSS, designed in Figma, as its only technical owner.',
+      'Reached Lighthouse scores of 91 for accessibility and 92 for SEO.',
     ],
-    tech: ['WordPress', 'HTML and CSS', 'Google Analytics', 'Make.com', 'Figma'],
+    tech: ['WordPress', 'Custom CSS/HTML', 'Google Analytics', 'Make.com', 'Figma'],
   },
   {
     title: 'System Engineer',
@@ -52,16 +61,16 @@ export const experience = [
     summary:
       'Core frontend developer on a UK life-insurance mobile app with 10K+ active users, working from India for a UK client.',
     bullets: [
-      'Worked as a core frontend developer on a UK life-insurance mobile app built with Angular, Ionic and TypeScript. It had 10K+ active users.',
-      'Took over release ownership when my tech lead was away for about a month, and kept that ownership afterward.',
-      'Led a frontend team of 4 in the final year, running code reviews and pair programming and writing onboarding notes for new teammates.',
-      'Designed a reusable full-stack framework (project structure, login setup and base UI components) that 2 more client teams adopted.',
-      'Wrote Spring Boot REST endpoints in Java for the app, including JWT login and token handling and MongoDB queries.',
-      'Integrated 30+ REST APIs into the Angular app, tested them in Postman, and handled login with route guards, HTTP interceptors and session management.',
-      'Moved releases from manual steps to GitLab CI and Jenkins pipelines.',
-      'Recognized with multiple Employee of the Month and Employee of the Quarter awards at TCS.',
+      'Shipped features for a UK client’s life-insurance mobile app, working from India as a core frontend developer (Angular, Ionic, TypeScript). The app has 10K+ active users in a regulated industry.',
+      'Took over releases for about a month when the tech lead was away, led the team through releases and security audits, and kept that responsibility after the lead returned.',
+      'Led a frontend team of 4 engineers through final-year delivery with code reviews, pair programming and onboarding docs.',
+      'Designed a reusable full-stack framework (project layout, login setup and shared UI components) that 2 more client teams adopted.',
+      'Wrote Java Spring Boot endpoints for the mobile app (JWT login tokens, MongoDB queries) and co-built the daily reporting endpoints behind an automated Excel report of 10 to 15 sheets for hundreds of users.',
+      'Integrated 30+ REST APIs into the Angular app and tested them in Postman, with JWT login, route guards and session handling.',
+      'Moved releases from manual steps to GitLab CI and Jenkins pipelines across development and staging.',
+      'Recognized with 8 TCS awards, including Star of the Month, Star of the Quarter, Star Team and 5 On the Spot.',
     ],
-    tech: ['Angular', 'Ionic', 'TypeScript', 'Java', 'Spring Boot', 'MongoDB', 'JWT', 'GitLab CI', 'Jenkins'],
+    tech: ['Angular', 'Ionic', 'TypeScript', 'Spring Boot', 'Java', 'MongoDB', 'JWT', 'GitLab CI', 'Jenkins', 'Postman'],
   },
 ]
 
@@ -83,11 +92,11 @@ export const education = [
 export const skills = {
   Languages: ['Python', 'Java', 'JavaScript', 'TypeScript', 'SQL'],
   'Frontend & Mobile': ['Angular', 'React', 'Ionic', 'HTML5', 'CSS3'],
-  Backend: ['Spring Boot', 'Node.js', 'Flask', 'REST APIs', 'JWT Auth'],
+  Backend: ['Spring Boot', 'Node.js', 'REST APIs', 'JWT Auth'],
   'AI / ML': ['LangGraph', 'LangChain', 'Anthropic API', 'Prompt Engineering', 'Hugging Face', 'PyTorch', 'BERT'],
   DevOps: ['Docker', 'GitLab CI', 'GitHub Actions', 'Jenkins'],
-  Databases: ['MySQL', 'MongoDB'],
-  'Testing & Tools': ['Pytest', 'JUnit', 'Jest', 'Jasmine', 'Karma', 'Git', 'Postman', 'Jira', 'Figma'],
+  Databases: ['MongoDB'],
+  'Testing & Tools': ['Pytest', 'JUnit', 'Jest', 'Jasmine', 'Karma', 'Git', 'Postman', 'Figma'],
 }
 
 // Headline numbers for the home page. Each one comes from the experience entries above
@@ -101,5 +110,5 @@ export const stats = [
 
 export const coreStack = [
   'Java', 'Python', 'TypeScript', 'Spring Boot', 'Angular', 'React',
-  'Node.js', 'LangGraph', 'PyTorch', 'Docker', 'MySQL', 'MongoDB',
+  'Node.js', 'LangGraph', 'PyTorch', 'Docker', 'Ionic', 'MongoDB',
 ]
