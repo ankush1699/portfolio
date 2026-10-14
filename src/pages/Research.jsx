@@ -34,9 +34,9 @@ const Research = () => {
       tags: ['LLM Agents', 'LangGraph', 'Cost Optimization'],
     },
     {
-      title: 'ZK Password Auth Architecture & Tradeoffs',
+      title: 'How My Zero-Knowledge Login Works',
       summary:
-        'Zero-knowledge proof architectures for password authentication: tradeoffs between proof generation time, verification speed, and security guarantees. Circuit design and optimization strategies in Circom.',
+        'A Circom circuit has one private input (the password) and one public input (its Poseidon hash). The browser builds a Groth16 proof with SnarkJS, and an Express server verifies it, so the password never leaves the browser. This is a course-style demo, not production auth. Known limitations: the stored hash is unsalted, proofs are not tied to a one-time challenge so a captured proof could be replayed, the server does not check that a proof belongs to the account, and login state is kept in localStorage. No performance measurements were taken.',
       tags: ['Zero-Knowledge Proofs', 'Security', 'Cryptography'],
     },
   ]
