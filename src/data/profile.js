@@ -79,7 +79,7 @@ export const education = [
     degree: 'M.S. Computer Engineering',
     school: 'Virginia Tech',
     period: 'Aug 2024 to May 2026',
-    detail: 'GPA 3.78/4.0 · Reinforcement Learning, Deep Learning, Computer Vision, Information Security, Large-Scale Software Development',
+    detail: 'GPA 3.78/4.0 · Reinforcement Learning, Deep Learning, Machine Learning, Computer Vision, Information Security, Large-Scale Software Development, Brain-inspired Computer Architecture',
   },
   {
     degree: 'B.E. Computer Science & Engineering',

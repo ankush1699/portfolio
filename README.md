@@ -48,7 +48,7 @@ src/
 public/                 Everything the site serves as-is
   hero.png              Photo in the hero (square, about 640px)
   og-image.png          Link preview image (1200 x 627)
-  logo-on-dark.png      Logo for the dark header and footer
+  logo-name-on-dark.png  Name part of the logo (the role line under it is live text in Logo.jsx)
   covers/               Project thumbnails (1200 x 627)
   fonts/                Web fonts (Lemon Milk, headings)
   404.html              Makes page links work on GitHub Pages

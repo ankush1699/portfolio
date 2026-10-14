@@ -57,7 +57,7 @@
   --blue-deep: var(--burgundy-deep); /* hover / pressed */
 
   /* Header and footer: dark charcoal, light text (all pairs 7:1 or better).
-     Uses logo-on-dark.png, a copy of the logo with "Chaudhary" in light gray. */
+     The logo is logo-name-on-dark.png (name only, "Chaudhary" in light gray) plus live role text. */
   --chrome-bg: #2A2E34;
   --chrome-border: #484E57;
   --chrome-text: #FFFFFF;
@@ -65,6 +65,7 @@
   --chrome-text-faint: #BFC4CA;
   --chrome-hover: #D3D7DC;
   --chrome-accent: #D3D7DC;
+  --logo-role: #FED900;              /* role line under the logo name */
 
   /* Rounded-corner highlight boxes */
   --radius-chip: 8px;
@@ -376,3 +377,29 @@ code {
 .animate-fade-in { animation: fadeIn 0.9s ease-out; }
 .animate-slide-in-left { animation: slideInLeft 0.7s ease-out; }
 .animate-slide-in-right { animation: slideInRight 0.7s ease-out; }
+
+/* Logo lockup: name image with live role text under it. --logo-h sets the size. */
+.logo-lockup {
+  --logo-h: 26px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--logo-h) * 0.18);
+  line-height: 1;
+}
+
+.logo-lockup-name {
+  height: var(--logo-h);
+  width: auto;
+  display: block;
+}
+
+.logo-lockup-role {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: calc(var(--logo-h) * 0.37);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--logo-role);
+}

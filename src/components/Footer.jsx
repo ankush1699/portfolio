@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import './Footer.css'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { personal } from '../data/profile'
+import Logo from './Logo'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -11,7 +12,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-grid">
           <div className="footer-col footer-col-main">
-            <img src={`${import.meta.env.BASE_URL}logo-on-dark.png`} alt="Ankush Chaudhary" className="footer-logo-img" />
+            <Logo className="footer-logo-lockup" />
             <p className="footer-role">{personal.role}</p>
             <a href={`mailto:${personal.email}`} className="footer-email">
               {personal.email}

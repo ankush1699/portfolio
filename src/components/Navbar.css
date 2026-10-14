@@ -31,14 +31,12 @@
   line-height: 0;
 }
 
-.nav-logo-img {
-  height: 32px;
-  width: auto;
-  display: block;
+.nav-logo-lockup {
+  --logo-h: 26px;
   transition: opacity 0.18s ease;
 }
 
-.nav-logo:hover .nav-logo-img {
+.nav-logo:hover .nav-logo-lockup {
   opacity: 0.8;
 }
 
@@ -85,8 +83,8 @@
     display: block;
   }
 
-  .nav-logo-img {
-    height: 26px;
+  .nav-logo-lockup {
+    --logo-h: 22px;
   }
 
   .nav-menu {

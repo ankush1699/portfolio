@@ -18,10 +18,8 @@
   border-bottom: 1px solid var(--chrome-border);
 }
 
-.footer-logo-img {
-  height: 30px;
-  width: auto;
-  display: block;
+.footer-logo-lockup {
+  --logo-h: 28px;
   margin-bottom: var(--space-3);
 }
 
@@ -97,9 +95,10 @@
     gap: var(--space-8);
   }
 
-  .footer-logo-img {
+  .footer-logo-lockup {
     margin-left: auto;
     margin-right: auto;
+    align-items: center;
   }
 
   .footer-nav {

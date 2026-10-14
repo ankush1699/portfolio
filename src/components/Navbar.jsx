@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import { FiMenu, FiX } from 'react-icons/fi'
+import Logo from './Logo'
 
 const Navbar = ({ scrollY }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,8 +36,8 @@ const Navbar = ({ scrollY }) => {
   return (
     <nav className={`navbar ${scrollY > 60 ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <Link to="/" className="nav-logo" onClick={handleLogoClick} aria-label="Home">
-          <img src={`${import.meta.env.BASE_URL}logo-on-dark.png`} alt="Ankush Chaudhary" className="nav-logo-img" />
+        <Link to="/" className="nav-logo" onClick={handleLogoClick} aria-label="Ankush Chaudhary, Full Stack Software Engineer (AI), home">
+          <Logo className="nav-logo-lockup" />
         </Link>
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
           {navItems.map((item) => (
